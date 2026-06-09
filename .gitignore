@@ -1,0 +1,11 @@
+*~
+*.aux
+*.log
+*.pdf
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+*.out
+
+tex/_minted/
