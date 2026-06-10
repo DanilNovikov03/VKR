@@ -1,0 +1,9 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k}{public}\PYG{+w}{ }\PYG{k}{record}\PYG{+w}{ }\PYG{k}{class}\PYG{+w}{ }\PYG{n+nf}{WarResponse}\PYG{p}{(}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{Id}\PYG{p}{,}
+\PYG{+w}{    }\PYG{k+kt}{string}\PYG{+w}{ }\PYG{n}{Title}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{DateOnly}\PYG{+w}{ }\PYG{n}{StartDate}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{DateOnly}\PYG{o}{?}\PYG{+w}{ }\PYG{n}{EndDate}\PYG{p}{,}
+\PYG{+w}{    }\PYG{k+kt}{string?}\PYG{+w}{ }\PYG{n}{Summary}
+\PYG{p}{)}\PYG{p}{;}
+\end{MintedVerbatim}

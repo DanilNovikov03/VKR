@@ -1,0 +1,8 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{mapLayers}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{n+nx}{events}\PYG{o}{:}\PYG{+w}{ }\PYG{n+nx}{L}\PYG{p}{.}\PYG{n+nx}{layerGroup}\PYG{p}{().}\PYG{n+nx}{addTo}\PYG{p}{(}\PYG{n+nx}{map}\PYG{p}{),}
+\PYG{+w}{    }\PYG{n+nx}{controlZones}\PYG{o}{:}\PYG{+w}{ }\PYG{n+nx}{L}\PYG{p}{.}\PYG{n+nx}{layerGroup}\PYG{p}{().}\PYG{n+nx}{addTo}\PYG{p}{(}\PYG{n+nx}{map}\PYG{p}{),}
+\PYG{+w}{    }\PYG{n+nx}{armies}\PYG{o}{:}\PYG{+w}{ }\PYG{n+nx}{L}\PYG{p}{.}\PYG{n+nx}{layerGroup}\PYG{p}{().}\PYG{n+nx}{addTo}\PYG{p}{(}\PYG{n+nx}{map}\PYG{p}{),}
+\PYG{+w}{    }\PYG{n+nx}{frontLines}\PYG{o}{:}\PYG{+w}{ }\PYG{n+nx}{L}\PYG{p}{.}\PYG{n+nx}{layerGroup}\PYG{p}{().}\PYG{n+nx}{addTo}\PYG{p}{(}\PYG{n+nx}{map}\PYG{p}{)}
+\PYG{p}{\PYGZcb{};}
+\end{MintedVerbatim}

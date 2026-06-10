@@ -1,0 +1,9 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k}{public}\PYG{+w}{ }\PYG{k}{partial}\PYG{+w}{ }\PYG{k}{class}\PYG{+w}{ }\PYG{n+nc}{PalantirDbContext}\PYG{+w}{ }\PYG{p}{:}\PYG{+w}{ }\PYG{n}{DbContext}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{n+nf}{PalantirDbContext}\PYG{p}{(}\PYG{n}{DbContextOptions}\PYG{o}{\PYGZlt{}}\PYG{n}{PalantirDbContext}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{options}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{:}\PYG{+w}{ }\PYG{k}{base}\PYG{p}{(}\PYG{n}{options}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{k}{virtual}\PYG{+w}{ }\PYG{n}{DbSet}\PYG{o}{\PYGZlt{}}\PYG{n}{War}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{wars}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{k}{get}\PYG{p}{;}\PYG{+w}{ }\PYG{k}{set}\PYG{p}{;}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{k}{virtual}\PYG{+w}{ }\PYG{n}{DbSet}\PYG{o}{\PYGZlt{}}\PYG{n}{Operation}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{operations}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{k}{get}\PYG{p}{;}\PYG{+w}{ }\PYG{k}{set}\PYG{p}{;}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{k}{virtual}\PYG{+w}{ }\PYG{n}{DbSet}\PYG{o}{\PYGZlt{}}\PYG{n}{Event}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{events}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{k}{get}\PYG{p}{;}\PYG{+w}{ }\PYG{k}{set}\PYG{p}{;}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{k}{virtual}\PYG{+w}{ }\PYG{n}{DbSet}\PYG{o}{\PYGZlt{}}\PYG{n}{ControlZone}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{control\PYGZus{}zones}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{k}{get}\PYG{p}{;}\PYG{+w}{ }\PYG{k}{set}\PYG{p}{;}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}

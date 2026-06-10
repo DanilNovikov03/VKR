@@ -1,0 +1,44 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{n+na}{[Fact]}
+\PYG{k}{public}\PYG{+w}{ }\PYG{k}{async}\PYG{+w}{ }\PYG{n}{Task}\PYG{+w}{ }\PYG{n+nf}{GetByWarId\PYGZus{}WhenTheatersExist\PYGZus{}ReturnsOkResult}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{c+c1}{// Arrange}
+\PYG{+w}{    }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{theaterResponses}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{List}\PYG{o}{\PYGZlt{}}\PYG{n}{TheaterResponse}\PYG{o}{\PYGZgt{}}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{TheaterResponse}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{n}{Id}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{,}
+\PYG{+w}{            }\PYG{n}{WarId}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{,}
+\PYG{+w}{            }\PYG{n}{Title}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Восточный фронт\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{            }\PYG{n}{Description}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Основной театр боевых действий\PYGZdq{}}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{},}
+\PYG{+w}{        }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{TheaterResponse}
+\PYG{+w}{        }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{n}{Id}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{2}\PYG{p}{,}
+\PYG{+w}{            }\PYG{n}{WarId}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{,}
+\PYG{+w}{            }\PYG{n}{Title}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Западный фронт\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{            }\PYG{n}{Description}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Театр боевых действий в Западной Европе\PYGZdq{}}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{};}
+
+\PYG{+w}{    }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{theaterServiceMock}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{Mock}\PYG{o}{\PYGZlt{}}\PYG{n}{ITheaterService}\PYG{o}{\PYGZgt{}}\PYG{p}{();}
+
+\PYG{+w}{    }\PYG{n}{theaterServiceMock}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{Setup}\PYG{p}{(}\PYG{n}{service}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{service}\PYG{p}{.}\PYG{n}{GetByWarIdAsync}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{))}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{ReturnsAsync}\PYG{p}{(}\PYG{n}{theaterResponses}\PYG{p}{);}
+
+\PYG{+w}{    }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{controller}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{TheatersController}\PYG{p}{(}\PYG{n}{theaterServiceMock}\PYG{p}{.}\PYG{n}{Object}\PYG{p}{);}
+
+\PYG{+w}{    }\PYG{c+c1}{// Act}
+\PYG{+w}{    }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{result}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{await}\PYG{+w}{ }\PYG{n}{controller}\PYG{p}{.}\PYG{n}{GetByWarId}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{);}
+
+\PYG{+w}{    }\PYG{c+c1}{// Assert}
+\PYG{+w}{    }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{okResult}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{Assert}\PYG{p}{.}\PYG{n}{IsType}\PYG{o}{\PYGZlt{}}\PYG{n}{OkObjectResult}\PYG{o}{\PYGZgt{}}\PYG{p}{(}\PYG{n}{result}\PYG{p}{);}
+\PYG{+w}{    }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{returnedTheaters}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{Assert}\PYG{p}{.}\PYG{n}{IsType}\PYG{o}{\PYGZlt{}}\PYG{n}{List}\PYG{o}{\PYGZlt{}}\PYG{n}{TheaterResponse}\PYG{o}{\PYGZgt{}\PYGZgt{}}\PYG{p}{(}\PYG{n}{okResult}\PYG{p}{.}\PYG{n}{Value}\PYG{p}{);}
+
+\PYG{+w}{    }\PYG{n}{Assert}\PYG{p}{.}\PYG{n}{Equal}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{returnedTheaters}\PYG{p}{.}\PYG{n}{Count}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n}{Assert}\PYG{p}{.}\PYG{n}{Equal}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Восточный фронт\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{returnedTheaters}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{].}\PYG{n}{Title}\PYG{p}{);}
+
+\PYG{+w}{    }\PYG{n}{theaterServiceMock}\PYG{p}{.}\PYG{n}{Verify}\PYG{p}{(}\PYG{n}{service}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{service}\PYG{p}{.}\PYG{n}{GetByWarIdAsync}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{Times}\PYG{p}{.}\PYG{n}{Once}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}

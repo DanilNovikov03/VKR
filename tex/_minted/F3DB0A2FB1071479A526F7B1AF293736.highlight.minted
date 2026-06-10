@@ -1,0 +1,13 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{function}\PYG{+w}{ }\PYG{n+nx}{addEventMarker}\PYG{p}{(}\PYG{n+nx}{event}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{marker}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nx}{L}\PYG{p}{.}\PYG{n+nx}{marker}\PYG{p}{(}\PYG{p}{[}\PYG{n+nx}{event}\PYG{p}{.}\PYG{n+nx}{lat}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{event}\PYG{p}{.}\PYG{n+nx}{lng}\PYG{p}{]}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{n+nx}{icon}\PYG{o}{:}\PYG{+w}{ }\PYG{n+nx}{eventIcon}\PYG{+w}{ }\PYG{p}{\PYGZcb{}}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n+nx}{bindPopup}\PYG{p}{(}\PYG{l+s+sb}{`}
+\PYG{l+s+sb}{            \PYGZlt{}strong\PYGZgt{}}\PYG{l+s+si}{\PYGZdl{}\PYGZob{}}\PYG{n+nx}{escapeHtml}\PYG{p}{(}\PYG{n+nx}{event}\PYG{p}{.}\PYG{n+nx}{title}\PYG{p}{)}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+sb}{\PYGZlt{}/strong\PYGZgt{}\PYGZlt{}br\PYGZgt{}}
+\PYG{l+s+sb}{            \PYGZlt{}span\PYGZgt{}}\PYG{l+s+si}{\PYGZdl{}\PYGZob{}}\PYG{n+nx}{escapeHtml}\PYG{p}{(}\PYG{n+nx}{formatDate}\PYG{p}{(}\PYG{n+nx}{event}\PYG{p}{.}\PYG{n+nx}{date}\PYG{p}{)}\PYG{p}{)}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+sb}{\PYGZlt{}/span\PYGZgt{}\PYGZlt{}br\PYGZgt{}}
+\PYG{l+s+sb}{            \PYGZlt{}span\PYGZgt{}}\PYG{l+s+si}{\PYGZdl{}\PYGZob{}}\PYG{n+nx}{escapeHtml}\PYG{p}{(}\PYG{n+nx}{event}\PYG{p}{.}\PYG{n+nx}{description}\PYG{p}{)}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+sb}{\PYGZlt{}/span\PYGZgt{}}
+\PYG{l+s+sb}{        }\PYG{l+s+sb}{`}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{n+nx}{marker}\PYG{p}{.}\PYG{n+nx}{addTo}\PYG{p}{(}\PYG{n+nx}{mapLayers}\PYG{p}{.}\PYG{n+nx}{events}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{    }\PYG{n+nx}{pageState}\PYG{p}{.}\PYG{n+nx}{featureLayers}\PYG{p}{.}\PYG{n+nx}{push}\PYG{p}{(}\PYG{n+nx}{marker}\PYG{p}{)}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}

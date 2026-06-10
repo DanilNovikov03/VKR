@@ -1,0 +1,10 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k}{public}\PYG{+w}{ }\PYG{k}{record}\PYG{+w}{ }\PYG{k}{class}\PYG{+w}{ }\PYG{n+nf}{ControlZoneResponse}\PYG{p}{(}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{Id}\PYG{p}{,}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{WarId}\PYG{p}{,}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{WarSideId}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{DateOnly}\PYG{+w}{ }\PYG{n}{DateControl}\PYG{p}{,}
+\PYG{+w}{    }\PYG{k+kt}{string}\PYG{+w}{ }\PYG{n}{PrecisionControl}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{MultiPolygon}\PYG{+w}{ }\PYG{n}{Geom}
+\PYG{p}{);}
+\end{MintedVerbatim}

@@ -1,0 +1,7 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{pageState}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{n+nx}{operationId}\PYG{o}{:}\PYG{+w}{ }\PYG{n+nx}{getQueryParam}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}operationId\PYGZdq{}}\PYG{p}{)}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n+nx}{operation}\PYG{o}{:}\PYG{+w}{ }\PYG{k+kc}{null}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n+nx}{featureLayers}\PYG{o}{:}\PYG{+w}{ }\PYG{p}{[}\PYG{p}{]}
+\PYG{p}{\PYGZcb{}}\PYG{p}{;}
+\end{MintedVerbatim}

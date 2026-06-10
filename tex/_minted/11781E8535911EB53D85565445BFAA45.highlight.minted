@@ -1,0 +1,11 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{function}\PYG{+w}{ }\PYG{n+nx}{addFrontLine}\PYG{p}{(}\PYG{n+nx}{frontLine}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{line}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nx}{L}\PYG{p}{.}\PYG{n+nx}{polyline}\PYG{p}{(}\PYG{n+nx}{frontLine}\PYG{p}{.}\PYG{n+nx}{coordinates}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n+nx}{weight}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{4}\PYG{p}{,}
+\PYG{+w}{        }\PYG{n+nx}{dashArray}\PYG{o}{:}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}8 6\PYGZdq{}}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}\PYG{p}{)}\PYG{p}{.}\PYG{n+nx}{bindPopup}\PYG{p}{(}\PYG{l+s+sb}{`}\PYG{l+s+sb}{\PYGZlt{}strong\PYGZgt{}}\PYG{l+s+si}{\PYGZdl{}\PYGZob{}}\PYG{n+nx}{escapeHtml}\PYG{p}{(}\PYG{n+nx}{frontLine}\PYG{p}{.}\PYG{n+nx}{title}\PYG{p}{)}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+sb}{\PYGZlt{}/strong\PYGZgt{}}\PYG{l+s+sb}{`}\PYG{p}{)}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{n+nx}{line}\PYG{p}{.}\PYG{n+nx}{addTo}\PYG{p}{(}\PYG{n+nx}{mapLayers}\PYG{p}{.}\PYG{n+nx}{frontLines}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{    }\PYG{n+nx}{pageState}\PYG{p}{.}\PYG{n+nx}{featureLayers}\PYG{p}{.}\PYG{n+nx}{push}\PYG{p}{(}\PYG{n+nx}{line}\PYG{p}{)}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}

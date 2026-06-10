@@ -23,25 +23,9 @@
 % Загрузка основного класса
 \LoadClass[a4paper, oneside]{extreport}
 
-\ifx\pdfoutput\undefined
-    \RequirePackage{xltxtra}
-    \RequirePackage{polyglossia}[2014/05/21]
-    \setmainlanguage{russian}
-    \setotherlanguage{english}
-    \defaultfontfeatures{Ligatures={TeX},Renderer=Basic}  %% свойства шрифтов по умолчанию. Для XeTeX опцию Renderer=Basic можно не указывать, о\на необходима для LuaTeX
-    \setmainfont[Ligatures={TeX,Historic}]{Times New Roman} %% задаёт основной шрифт документа. 
-    \setromanfont[Mapping=tex-text]{Times New Roman}
-    \newfontfamily{\cyrillicfont}{Times New Roman}
-    \newfontfamily{\cyrillicfontrm}{Times New Roman}
-    \newfontfamily{\cyrillicfonttt}{Times New Roman}
-    \newfontfamily{\cyrillicfontsf}{Times New Roman}
-\else
-    \RequirePackage{times}
-    \RequirePackage[english,russian]{babel}
-\fi
-
 % Загрузка дополнительных пакетов и настрока команд.
 % Параметры полей для страницы.
+\RequirePackage{xltxtra}
 \RequirePackage{tikz}
 \RequirePackage[onehalfspacing]{setspace}
 \RequirePackage[normalem]{ulem} %https://stackoverflow.com/questions/2553392/latex-rule-filling-the-line
@@ -74,12 +58,23 @@
 
 % Математические дополнения от AMS
 \RequirePackage{amsthm, amsmath, amscd, amsfonts, amssymb}
+
 \RequirePackage{hyperref}
 \RequirePackage{cleveref}
 
-\ProcessOptions\relax
+\RequirePackage{polyglossia}[2014/05/21]
 
+\setmainlanguage{russian}
+\setotherlanguage{english}
+\defaultfontfeatures{Ligatures={TeX},Renderer=Basic}  %% свойства шрифтов по умолчанию. Для XeTeX опцию Renderer=Basic можно не указывать, о\на необходима для LuaTeX
+\setmainfont[Ligatures={TeX,Historic}]{Times New Roman} %% задаёт основной шрифт документа. 
 
+\setromanfont[Mapping=tex-text]{Times New Roman}
+
+\newfontfamily{\cyrillicfont}{Times New Roman}
+\newfontfamily{\cyrillicfontrm}{Times New Roman}
+\newfontfamily{\cyrillicfonttt}{Times New Roman}
+\newfontfamily{\cyrillicfontsf}{Times New Roman}
 
 \RequirePackage{graphicx}
 \RequirePackage{float}
@@ -126,7 +121,7 @@
   frame=lines,
   breaklines,
   framesep=2.5mm,
-  fontsize=\small,
+  fontsize=\scriptsize,
   numbersep=5pt,
   xleftmargin=15pt
 }
@@ -169,31 +164,17 @@
   \setlength{\parindent}{12.7mm}%{2.5em}                   % Абзацный отступ. Должен быть одинаковым по всему тексту и равен пяти знакам (ГОСТ Р 7.0.11-2011, 5.3.7).
 }
 
-\ifx\pdfoutput\undefined
-    \addto\captionsrussian{%
-      %%% Переопределение именований %%%
-      \renewcommand{\contentsname}{Содержание} % (ГОСТ Р 7.0.11-2011, 4)
-      \renewcommand{\figurename}{Рис.} % (ГОСТ Р 7.0.11-2011, 5.3.9)
-      \renewcommand{\tablename}{Таблица} % (ГОСТ Р 7.0.11-2011, 5.3.10)
-      \renewcommand{\listfigurename}{Список рисунков}
-      \renewcommand{\listtablename}{Список таблиц}
-      \renewcommand{\thechapter}{\arabic{chapter}.}
-      \renewcommand{\thesection}{\thechapter\arabic{section}.}
-      \renewcommand{\thesubsection}{\thechapter\arabic{section}.\arabic{subsection}.}
+\addto\captionsrussian{%
+  %%% Переопределение именований %%%
+  \renewcommand{\contentsname}{Содержание} % (ГОСТ Р 7.0.11-2011, 4)
+  \renewcommand{\figurename}{Рис.} % (ГОСТ Р 7.0.11-2011, 5.3.9)
+  \renewcommand{\tablename}{Таблица} % (ГОСТ Р 7.0.11-2011, 5.3.10)
+  \renewcommand{\listfigurename}{Список рисунков}
+  \renewcommand{\listtablename}{Список таблиц}
+  \renewcommand{\thechapter}{\arabic{chapter}.}
+  \renewcommand{\thesection}{\thechapter\arabic{section}.}
+  \renewcommand{\thesubsection}{\thechapter\arabic{section}.\arabic{subsection}.}
 }
-\else
-    %%% Переопределение именований %%%
-    \renewcommand{\contentsname}{Содержание} % (ГОСТ Р 7.0.11-2011, 4)
-    \renewcommand{\figurename}{Рис.} % (ГОСТ Р 7.0.11-2011, 5.3.9)
-    \renewcommand{\tablename}{Таблица} % (ГОСТ Р 7.0.11-2011, 5.3.10)
-    \renewcommand{\listfigurename}{Список рисунков}
-    \renewcommand{\listtablename}{Список таблиц}
-    \renewcommand{\thechapter}{\arabic{chapter}.}
-    \renewcommand{\thesection}{\thechapter\arabic{section}.}
-    \renewcommand{\thesubsection}{\thechapter\arabic{section}.\arabic{subsection}.}
-\fi
-
-
 
 % Правка 20230617
 \renewcommand{\labelenumii}{\theenumii}
@@ -260,16 +241,13 @@
 \RequirePackage{csquotes}
 \RequirePackage{epigraph}
 \RequirePackage{enumitem} %https://tex.stackexchange.com/questions/6081/reduce-space-between-enumerated-items
+%\setlist{nosep,labelindent=\parindent,leftmargin=*} %nolistsep deprecated
 \setlist[enumerate,1]{nosep,labelindent=\parindent,leftmargin=*}
 \setlist[enumerate,2]{nosep,labelindent=0pt,leftmargin=*}
 \setlist[enumerate,3]{nosep,labelindent=0pt,leftmargin=*}
-\setlist[enumerate,4]{nosep,labelindent=0pt,leftmargin=*}
-\setlist[enumerate,5]{nosep,labelindent=0pt,leftmargin=*}
 \setlist[itemize,1]{nosep,labelindent=\parindent,leftmargin=*}
 \setlist[itemize,2]{nosep,labelindent=0pt,leftmargin=*}
 \setlist[itemize,3]{nosep,labelindent=0pt,leftmargin=*}
-\setlist[itemize,4]{nosep,labelindent=0pt,leftmargin=*}
-\setlist[itemize,5]{nosep,labelindent=0pt,leftmargin=*}
 
 \RequirePackage[
   backend=biber, 
@@ -279,8 +257,6 @@
 ]{biblatex}
 \urlstyle{same}
 
-% Добавление пакета placeins для работы команды \FloatBarrier - 20260603
-\RequirePackage{placeins}
 % Добавление пакета SVG для подключения векторных рисунков - 20230618
 \RequirePackage{svg}
 
@@ -334,10 +310,6 @@
 \newcommand{\abstractRU}[1]{\edef\@abstractRU{{#1}}}
 \newcommand{\@abstractEN}{\#}
 \newcommand{\abstractEN}[1]{\edef\@abstractEN{{#1}}}
-\newcommand{\@worktype}{\#}
-\newcommand{\worktype}[1]{\edef\@worktype{{#1}}}
-\newcommand{\@workgrade}{\#}
-\newcommand{\workgrade}[1]{\edef\@workgrade{{#1}}}
 
 \newcommand{\@countWorkPage}{\#}
 \newcommand{\countWorkPage}[1]{\edef\@countWorkPage{{#1}}}
@@ -388,8 +360,8 @@
     
     \begin{minipage}{1\textwidth}
       \noindent
-      \begin{minipage}[t]{0.48\textwidth}
-        \@worktype~работа защищена\\
+      \begin{minipage}{0.48\textwidth}
+        Работа защищена\\
         «\underline{\hspace{0.7cm}}» \underline{\hspace{2cm}} \the\year~г.\\
         Оценка \underline{\hspace{\ML}}\\
         Председатель ГЭК, \@ChairmanOfTheStateCertificationCommissiondegree\\
@@ -397,8 +369,8 @@
       \end{minipage}%
       \hfill
       \noindent
-      \begin{minipage}[t]{0.48\textwidth}
-        Допустить к защите в ГЭК\\
+      \begin{minipage}{0.48\textwidth}
+        Допустить к защите\\
         «\underline{\hspace{0.7cm}}» \underline{\hspace{2cm}} \the\year~г.\\
         Заведующий кафедрой ВТиЭ,\\
         \@departmentchiefdegree\\
@@ -411,14 +383,14 @@
     {\MakeUppercase{\@title}}
     \vspace{0.5cm}
     
-    \textsc{ПОЯСНИТЕЛЬНАЯ ЗАПИСКА\\К ВЫПУСКНОЙ КВАЛИФИКАЦИОННОЙ РАБОТЕ \@workgrade}
+    \textsc{ПОЯСНИТЕЛЬНАЯ ЗАПИСКА К ВЫПУСКНОЙ КВАЛИФИКАЦИОННОЙ РАБОТЕ}
     \vspace{1.0cm}
   \end{center}
   
   \bigskip
   
   \begin{center}
-    \uline{\hfill \@docname.\@groupnumber.\@GradebookNumber~ПЗ \hfill}
+    \uline{\hfill \@docname.5.205-2.\@GradebookNumber~ПЗ \hfill}
   \end{center}
   
   \noindent Студент группы \uline{ \mbox{\hspace{\ML}} \@groupnumber \hfill \@author}
@@ -427,7 +399,7 @@
   \noindent Руководитель работы \uline{ \mbox{\hspace{1cm}} \@supervisordegree \hfill \@supervisor}
   \vspace{0.5cm}
   
-  \noindent Консультанты: \mbox{\hspace{1cm}} \@Consultantdegree \hfill \@Consultant
+  \noindent Консультанты: \@Consultantdegree \hfill \@Consultant
   \vspace{0.5cm}
   
   \noindent Нормоконтролер \uline{ \mbox{\hspace{2cm}} \@NormControllerdegree \hfill \@NormController}
@@ -464,7 +436,25 @@
   \@abstractRU
   
   %Дипломная работа оформлена с помощью системы компьютерной вёрстки \TeX{} и его расширения \XeTeX{} из дистрибутива \textit{TeX Live}.
+  
+  %\begin{center}
+  %  ABSTRACT
+  %\end{center}
+  
+  % The total amount of work is \formbytotal{TotPages}{page}{}{}{'s}, include \formbytotal{totalcount@figure}{image}{}{}{'s} and \formbytotal{totalcount@table}{table}{}{}{'s}.
+  %The amount of work sheets \hfill \@countWorkPage
 
+  %Number of images \hfill \@countWorkImg
+
+  %Number of sources used \hfill \@countWorkLit
+
+  %Number of tables \hfill \@countWorkTab
+
+  %{\MakeUppercase{\@keysEN}}.
+  
+  %\@abstractEN
+    
+  % Thesis is framed using the computer layout system \TeX{} and its extension \XeTeX{} from the distribution \textit{TeX Live}.
 }
 
 % Определение последней страницы.

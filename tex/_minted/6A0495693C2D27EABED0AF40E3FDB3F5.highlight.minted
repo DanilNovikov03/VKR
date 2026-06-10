@@ -1,0 +1,10 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k+kd}{function}\PYG{+w}{ }\PYG{n+nx}{escapeHtml}\PYG{p}{(}\PYG{n+nx}{value}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{return}\PYG{+w}{ }\PYG{n+nb}{String}\PYG{p}{(}\PYG{n+nx}{value}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n+nx}{replaceAll}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}\PYGZam{}\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}\PYGZam{}amp;\PYGZdq{}}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n+nx}{replaceAll}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}\PYGZlt{}\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}\PYGZam{}lt;\PYGZdq{}}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n+nx}{replaceAll}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}\PYGZgt{}\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}\PYGZam{}gt;\PYGZdq{}}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n+nx}{replaceAll}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}\PYGZdq{}\PYGZsq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}\PYGZam{}quot;\PYGZdq{}}\PYG{p}{)}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n+nx}{replaceAll}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}\PYGZsq{}\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}\PYGZam{}\PYGZsh{}039;\PYGZdq{}}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}

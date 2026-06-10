@@ -149,7 +149,7 @@ ORM и отображение сущностей реализуются сред
 \caption{\label{tab:db-main-tables}Основные таблицы базы данных и их назначение}
 \centering
 \small
-\begin{tabular}{|p{3.0cm}|p{11.6cm}|}
+\begin{tabular}{|p{2.8cm}|p{12.2cm}|}
 \hline
 Таблица & Назначение \\
 \hline
@@ -186,7 +186,6 @@ ORM и отображение сущностей реализуются сред
 \vspace{-0.75cm}
 \begin{minted}{sql}
 CREATE EXTENSION IF NOT EXISTS postgis;
-
 CREATE TABLE wars (
     war_id SERIAL PRIMARY KEY,
     title TEXT NOT NULL,
@@ -334,24 +333,19 @@ public class ArmyRepository : IArmyRepository {
     public ArmyRepository(PalantirDbContext dbContext) {
         _dbContext = dbContext;
     }
-
     public async Task<List<Army>> GetAllAsync() =>
         await _dbContext.armies.ToListAsync<Army>();
-
     public async Task<Army?> GetByIdAsync(int id) =>
         await _dbContext.armies
             .FirstOrDefaultAsync(a => a.army_id == id);
-
     public async Task AddAsync(Army army) {
         await _dbContext.armies.AddAsync(army);
         await _dbContext.SaveChangesAsync();
     }
-
     public async Task UpdateAsync(Army army) {
         _dbContext.armies.Update(army);
         await _dbContext.SaveChangesAsync();
     }
-
     public async Task DeleteAsync(int id) {
         var army = await _dbContext.armies.FindAsync(id);
         if (army != null) {
@@ -392,7 +386,7 @@ public class ArmyRepository : IArmyRepository {
 \label{tab:data-access-layers}
 \centering
 \small
-\begin{tabular}{|p{2.7cm}|p{6.1cm}|p{4.8cm}|}
+\begin{tabular}{|p{2.5cm}|p{7.7cm}|p{4.8cm}|}
 \hline
 Слой & Назначение & Примеры компонентов \\
 \hline
@@ -432,7 +426,6 @@ var army = await armyRepository.GetByIdAsync(id);
 if (army == null) {
     return null;
 }
-
 var response = new {
     Id = army.army_id,
     Title = army.title,
@@ -519,8 +512,7 @@ public record class WarResponse(
 \vspace{-0.75cm}
 \begin{minted}{json}
 POST /api/wars
-Content-Type: application/json
-{
+Content-Type: application/json {
   "title": "Великая Отечественная война",
   "startDate": "1941-06-22",
   "endDate": "1945-05-09",
@@ -537,8 +529,7 @@ Content-Type: application/json
 \vspace{-0.75cm}
 \begin{minted}{http}
 HTTP/1.1 201 Created
-Content-Type: application/json
-{
+Content-Type: application/json {
   "id": 1,
   "title": "Великая Отечественная война",
   "startDate": "1941-06-22",
@@ -613,25 +604,18 @@ public record class ControlZoneResponse(
 \vspace{-0.75cm}
 \begin{minted}{json}
 POST /api/control-zones
-Content-Type: application/json
-{
+Content-Type: application/json {
   "warId": 1,
   "warSideId": 2,
   "dateControl": "1943-07-12",
   "precisionControl": "Граница зоны контроля построена по исторической карте и имеет приблизительный характер.",
   "geom": {
     "type": "MultiPolygon",
-    "coordinates": [
-      [
-        [
+    "coordinates": [[[
           [36.10, 51.20],
           [36.40, 51.25],
           [36.35, 51.05],
-          [36.10, 51.20]
-        ]
-      ]
-    ]
-  }
+          [36.10, 51.20]]]]}
 }
 \end{minted}
 \end{code}
@@ -644,8 +628,7 @@ Content-Type: application/json
 \vspace{-0.75cm}
 \begin{minted}{http}
 HTTP/1.1 201 Created
-Content-Type: application/json
-{
+Content-Type: application/json {
   "id": 15,
   "warId": 1,
   "warSideId": 2,
@@ -653,17 +636,11 @@ Content-Type: application/json
   "precisionControl": "Граница зоны контроля построена по исторической карте и имеет приблизительный характер.",
   "geom": {
     "type": "MultiPolygon",
-    "coordinates": [
-      [
-        [
+    "coordinates": [[[
           [36.10, 51.20],
           [36.40, 51.25],
           [36.35, 51.05],
-          [36.10, 51.20]
-        ]
-      ]
-    ]
-  }
+          [36.10, 51.20]]]]}
 }
 \end{minted}
 \end{code}
@@ -676,22 +653,15 @@ Content-Type: application/json
 \vspace{-0.75cm}
 \begin{minted}{json}
 PUT /api/control-zones/15
-Content-Type: application/json
-{
+Content-Type: application/json {
   "precisionControl": "Геометрия уточнена на основе дополнительного картографического источника.",
   "geom": {
     "type": "MultiPolygon",
-    "coordinates": [
-      [
-        [
+    "coordinates": [[[
           [36.12, 51.22],
           [36.42, 51.27],
           [36.36, 51.04],
-          [36.12, 51.22]
-        ]
-      ]
-    ]
-  }
+          [36.12, 51.22]]]]}
 }
 \end{minted}
 \end{code}

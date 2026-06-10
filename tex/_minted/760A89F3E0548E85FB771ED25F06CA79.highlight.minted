@@ -1,0 +1,12 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{army}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{await}\PYG{+w}{ }\PYG{n}{armyRepository}\PYG{p}{.}\PYG{n}{GetByIdAsync}\PYG{p}{(}\PYG{n}{id}\PYG{p}{);}
+\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{army}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{return}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+
+\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{response}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{n}{Id}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{army}\PYG{p}{.}\PYG{n}{army\PYGZus{}id}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{Title}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{army}\PYG{p}{.}\PYG{n}{title}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{Type}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{army}\PYG{p}{.}\PYG{n}{type}
+\PYG{p}{\PYGZcb{};}
+\end{MintedVerbatim}

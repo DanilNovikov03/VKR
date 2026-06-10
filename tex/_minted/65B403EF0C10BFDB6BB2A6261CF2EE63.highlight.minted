@@ -1,0 +1,9 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k}{public}\PYG{+w}{ }\PYG{k}{interface}\PYG{+w}{ }\PYG{n}{IArmyRepository}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{n}{Task}\PYG{o}{\PYGZlt{}}\PYG{n}{List}\PYG{o}{\PYGZlt{}}\PYG{n}{Army}\PYG{o}{\PYGZgt{}\PYGZgt{}}\PYG{+w}{ }\PYG{n}{GetAllAsync}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{    }\PYG{n}{Task}\PYG{o}{\PYGZlt{}}\PYG{n}{Army}\PYG{o}{?}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{GetByIdAsync}\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{id}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{    }\PYG{n}{Task}\PYG{+w}{ }\PYG{n+nf}{AddAsync}\PYG{p}{(}\PYG{n}{Army}\PYG{+w}{ }\PYG{n}{army}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{    }\PYG{n}{Task}\PYG{+w}{ }\PYG{n+nf}{UpdateAsync}\PYG{p}{(}\PYG{n}{Army}\PYG{+w}{ }\PYG{n}{army}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{    }\PYG{n}{Task}\PYG{+w}{ }\PYG{n+nf}{DeleteAsync}\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{id}\PYG{p}{)}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}

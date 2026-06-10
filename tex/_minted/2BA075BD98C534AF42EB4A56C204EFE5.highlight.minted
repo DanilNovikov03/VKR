@@ -1,0 +1,10 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k+kd}{function}\PYG{+w}{ }\PYG{n+nx}{setMapCenterFromOperation}\PYG{p}{(}\PYG{n+nx}{operation}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{lat}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nx}{operation}\PYG{p}{.}\PYG{n+nx}{centerLat}\PYG{+w}{ }\PYG{o}{??}\PYG{+w}{ }\PYG{n+nx}{operation}\PYG{p}{.}\PYG{n+nx}{latitude}\PYG{+w}{ }\PYG{o}{??}\PYG{+w}{ }\PYG{n+nx}{operation}\PYG{p}{.}\PYG{n+nx}{lat}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{lng}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nx}{operation}\PYG{p}{.}\PYG{n+nx}{centerLng}\PYG{+w}{ }\PYG{o}{??}\PYG{+w}{ }\PYG{n+nx}{operation}\PYG{p}{.}\PYG{n+nx}{longitude}\PYG{+w}{ }\PYG{o}{??}\PYG{+w}{ }\PYG{n+nx}{operation}\PYG{p}{.}\PYG{n+nx}{lng}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n+nx}{isValidCoordinate}\PYG{p}{(}\PYG{n+nx}{lat}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{+w}{ }\PYG{n+nx}{isValidCoordinate}\PYG{p}{(}\PYG{n+nx}{lng}\PYG{p}{)}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n+nx}{map}\PYG{p}{.}\PYG{n+nx}{setView}\PYG{p}{(}\PYG{p}{[}\PYG{n+nb}{Number}\PYG{p}{(}\PYG{n+nx}{lat}\PYG{p}{)}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nb}{Number}\PYG{p}{(}\PYG{n+nx}{lng}\PYG{p}{)}\PYG{p}{]}\PYG{p}{,}\PYG{+w}{ }\PYG{n+nx}{operation}\PYG{p}{.}\PYG{n+nx}{zoom}\PYG{+w}{ }\PYG{o}{??}\PYG{+w}{ }\PYG{n+nx}{DEFAULT\PYGZus{}ZOOM}\PYG{p}{)}\PYG{p}{;}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}

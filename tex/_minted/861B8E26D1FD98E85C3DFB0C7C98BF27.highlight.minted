@@ -1,0 +1,5 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k+kd}{function}\PYG{+w}{ }\PYG{n+nx}{getQueryParam}\PYG{p}{(}\PYG{n+nx}{name}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{return}\PYG{+w}{ }\PYG{o+ow}{new}\PYG{+w}{ }\PYG{n+nx}{URLSearchParams}\PYG{p}{(}\PYG{n+nb}{window}\PYG{p}{.}\PYG{n+nx}{location}\PYG{p}{.}\PYG{n+nx}{search}\PYG{p}{).}\PYG{n+nx}{get}\PYG{p}{(}\PYG{n+nx}{name}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}

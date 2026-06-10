@@ -1,0 +1,6 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k}{public}\PYG{+w}{ }\PYG{k}{record}\PYG{+w}{ }\PYG{k}{class}\PYG{+w}{ }\PYG{n+nf}{UpdateControlZoneRequest}\PYG{p}{(}
+\PYG{+w}{    }\PYG{k+kt}{string}\PYG{+w}{ }\PYG{n}{PrecisionControl}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{MultiPolygon}\PYG{+w}{ }\PYG{n}{Geom}
+\PYG{p}{);}
+\end{MintedVerbatim}

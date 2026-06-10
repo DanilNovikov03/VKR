@@ -1,0 +1,10 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{connectionString}\PYG{+w}{ }\PYG{o}{=}
+\PYG{+w}{    }\PYG{n}{builder}\PYG{p}{.}\PYG{n}{Configuration}\PYG{p}{.}\PYG{n}{GetConnectionString}\PYG{p}{(}\PYG{n}{DatabaseSettings}\PYG{p}{.}\PYG{n}{ConnectionStringName}\PYG{p}{)}
+\PYG{+w}{    }\PYG{o}{??}\PYG{+w}{ }\PYG{k}{throw}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{InvalidOperationException}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Connection string not found\PYGZdq{}}\PYG{p}{);}
+\PYG{n}{builder}\PYG{p}{.}\PYG{n}{Services}\PYG{p}{.}\PYG{n}{AddDbContext}\PYG{o}{\PYGZlt{}}\PYG{n}{PalantirDbContext}\PYG{o}{\PYGZgt{}}\PYG{p}{(}\PYG{n}{options}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}
+\PYG{+w}{    }\PYG{n}{options}\PYG{p}{.}\PYG{n}{UseNpgsql}\PYG{p}{(}
+\PYG{+w}{        }\PYG{n}{connectionString}\PYG{p}{,}
+\PYG{+w}{        }\PYG{n}{o}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{o}\PYG{p}{.}\PYG{n}{UseNetTopologySuite}\PYG{p}{())}
+\PYG{p}{);}
+\end{MintedVerbatim}

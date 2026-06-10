@@ -1,0 +1,5 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{zones}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{await}\PYG{+w}{ }\PYG{n}{dbContext}\PYG{p}{.}\PYG{n}{control\PYGZus{}zones}
+\PYG{+w}{    }\PYG{p}{.}\PYG{n}{Where}\PYG{p}{(}\PYG{n}{zone}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{zone}\PYG{p}{.}\PYG{n}{date\PYGZus{}control}\PYG{+w}{ }\PYG{o}{\PYGZlt{}=}\PYG{+w}{ }\PYG{n}{selectedDate}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{.}\PYG{n}{ToListAsync}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\end{MintedVerbatim}

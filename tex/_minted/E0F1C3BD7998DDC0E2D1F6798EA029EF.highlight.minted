@@ -1,0 +1,12 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{yandexTilesApiKey}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nb}{window}\PYG{p}{.}\PYG{n+nx}{PALANTIR\PYGZus{}MAP\PYGZus{}CONFIG}\PYG{o}{?}\PYG{p}{.}\PYG{n+nx}{YANDEX\PYGZus{}TILES\PYGZus{}API\PYGZus{}KEY}\PYG{p}{;}
+\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{yandexTileUrl}\PYG{+w}{ }\PYG{o}{=}
+\PYG{+w}{    }\PYG{l+s+s2}{\PYGZdq{}https://tiles.api\PYGZhy{}maps.yandex.ru/v1/tiles/\PYGZdq{}}\PYG{+w}{ }\PYG{o}{+}
+\PYG{+w}{    }\PYG{l+s+s2}{\PYGZdq{}?x=\PYGZob{}x\PYGZcb{}\PYGZam{}y=\PYGZob{}y\PYGZcb{}\PYGZam{}z=\PYGZob{}z\PYGZcb{}\PYGZam{}lang=ru\PYGZus{}RU\PYGZam{}l=map\PYGZdq{}}\PYG{+w}{ }\PYG{o}{+}
+\PYG{+w}{    }\PYG{l+s+sb}{`\PYGZam{}projection=web\PYGZus{}mercator\PYGZam{}apikey=}\PYG{l+s+si}{\PYGZdl{}\PYGZob{}}\PYG{n+nx}{yandexTilesApiKey}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+sb}{`}\PYG{p}{;}
+
+\PYG{n+nx}{L}\PYG{p}{.}\PYG{n+nx}{tileLayer}\PYG{p}{(}\PYG{n+nx}{yandexTileUrl}\PYG{p}{,}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{n+nx}{maxZoom}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{19}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n+nx}{tileSize}\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mf}{256}
+\PYG{p}{\PYGZcb{}).}\PYG{n+nx}{addTo}\PYG{p}{(}\PYG{n+nx}{map}\PYG{p}{);}
+\end{MintedVerbatim}

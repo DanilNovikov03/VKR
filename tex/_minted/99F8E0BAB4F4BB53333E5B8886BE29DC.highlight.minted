@@ -1,0 +1,28 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k}{CREATE}\PYG{+w}{ }\PYG{n}{EXTENSION}\PYG{+w}{ }\PYG{k}{IF}\PYG{+w}{ }\PYG{k}{NOT}\PYG{+w}{ }\PYG{k}{EXISTS}\PYG{+w}{ }\PYG{n}{postgis}\PYG{p}{;}
+
+\PYG{k}{CREATE}\PYG{+w}{ }\PYG{k}{TABLE}\PYG{+w}{ }\PYG{n}{wars}\PYG{+w}{ }\PYG{p}{(}
+\PYG{+w}{    }\PYG{n}{war\PYGZus{}id}\PYG{+w}{ }\PYG{n+nb}{SERIAL}\PYG{+w}{ }\PYG{k}{PRIMARY}\PYG{+w}{ }\PYG{k}{KEY}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{title}\PYG{+w}{ }\PYG{n+nb}{TEXT}\PYG{+w}{ }\PYG{k}{NOT}\PYG{+w}{ }\PYG{k}{NULL}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{start\PYGZus{}date}\PYG{+w}{ }\PYG{n+nb}{DATE}\PYG{+w}{ }\PYG{k}{NOT}\PYG{+w}{ }\PYG{k}{NULL}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{end\PYGZus{}date}\PYG{+w}{ }\PYG{n+nb}{DATE}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{summary}\PYG{+w}{ }\PYG{n+nb}{TEXT}
+\PYG{p}{);}
+\PYG{k}{CREATE}\PYG{+w}{ }\PYG{k}{TABLE}\PYG{+w}{ }\PYG{n}{theaters}\PYG{+w}{ }\PYG{p}{(}
+\PYG{+w}{    }\PYG{n}{theater\PYGZus{}id}\PYG{+w}{ }\PYG{n+nb}{SERIAL}\PYG{+w}{ }\PYG{k}{PRIMARY}\PYG{+w}{ }\PYG{k}{KEY}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{war\PYGZus{}id}\PYG{+w}{ }\PYG{n+nb}{INT}\PYG{+w}{ }\PYG{k}{NOT}\PYG{+w}{ }\PYG{k}{NULL}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{title}\PYG{+w}{ }\PYG{n+nb}{TEXT}\PYG{+w}{ }\PYG{k}{NOT}\PYG{+w}{ }\PYG{k}{NULL}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{summary}\PYG{+w}{ }\PYG{n+nb}{TEXT}\PYG{p}{,}
+\PYG{+w}{    }\PYG{k}{FOREIGN}\PYG{+w}{ }\PYG{k}{KEY}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{war\PYGZus{}id}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{REFERENCES}\PYG{+w}{ }\PYG{n}{wars}\PYG{p}{(}\PYG{n}{war\PYGZus{}id}\PYG{p}{)}
+\PYG{p}{);}
+\PYG{k}{CREATE}\PYG{+w}{ }\PYG{k}{TABLE}\PYG{+w}{ }\PYG{n}{control\PYGZus{}zones}\PYG{+w}{ }\PYG{p}{(}
+\PYG{+w}{    }\PYG{n}{control\PYGZus{}id}\PYG{+w}{ }\PYG{n+nb}{SERIAL}\PYG{+w}{ }\PYG{k}{PRIMARY}\PYG{+w}{ }\PYG{k}{KEY}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{war\PYGZus{}id}\PYG{+w}{ }\PYG{n+nb}{INT}\PYG{+w}{ }\PYG{k}{NOT}\PYG{+w}{ }\PYG{k}{NULL}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{war\PYGZus{}side\PYGZus{}id}\PYG{+w}{ }\PYG{n+nb}{INT}\PYG{+w}{ }\PYG{k}{NOT}\PYG{+w}{ }\PYG{k}{NULL}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{date\PYGZus{}control}\PYG{+w}{ }\PYG{n+nb}{DATE}\PYG{+w}{ }\PYG{k}{NOT}\PYG{+w}{ }\PYG{k}{NULL}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{precision\PYGZus{}control}\PYG{+w}{ }\PYG{n+nb}{TEXT}\PYG{+w}{ }\PYG{k}{NOT}\PYG{+w}{ }\PYG{k}{NULL}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n}{geom}\PYG{+w}{ }\PYG{n}{geometry}\PYG{p}{(}\PYG{n}{MultiPolygon}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mi}{4326}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{NOT}\PYG{+w}{ }\PYG{k}{NULL}\PYG{p}{,}
+\PYG{+w}{    }\PYG{k}{FOREIGN}\PYG{+w}{ }\PYG{k}{KEY}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{war\PYGZus{}id}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{REFERENCES}\PYG{+w}{ }\PYG{n}{wars}\PYG{p}{(}\PYG{n}{war\PYGZus{}id}\PYG{p}{),}
+\PYG{+w}{    }\PYG{k}{FOREIGN}\PYG{+w}{ }\PYG{k}{KEY}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{war\PYGZus{}side\PYGZus{}id}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{REFERENCES}\PYG{+w}{ }\PYG{n}{war\PYGZus{}sides}\PYG{p}{(}\PYG{n}{war\PYGZus{}side\PYGZus{}id}\PYG{p}{)}
+\PYG{p}{);}
+\end{MintedVerbatim}

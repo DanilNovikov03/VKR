@@ -1,0 +1,13 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{err}{P}\PYG{err}{U}\PYG{err}{T}\PYG{+w}{ }\PYG{err}{/}\PYG{err}{a}\PYG{err}{p}\PYG{err}{i}\PYG{err}{/}\PYG{err}{c}\PYG{err}{o}\PYG{k+kc}{ntr}\PYG{err}{o}\PYG{err}{l}\PYG{l+m+mi}{\PYGZhy{}}\PYG{err}{z}\PYG{err}{o}\PYG{k+kc}{nes}\PYG{err}{/}\PYG{l+m+mi}{15}
+\PYG{err}{C}\PYG{err}{o}\PYG{k+kc}{ntent}\PYG{l+m+mi}{\PYGZhy{}}\PYG{err}{T}\PYG{err}{y}\PYG{err}{p}\PYG{err}{e}\PYG{p}{:}\PYG{+w}{ }\PYG{err}{a}\PYG{err}{p}\PYG{err}{p}\PYG{err}{l}\PYG{err}{i}\PYG{err}{c}\PYG{err}{a}\PYG{k+kc}{t}\PYG{err}{i}\PYG{err}{o}\PYG{k+kc}{n}\PYG{err}{/}\PYG{err}{j}\PYG{err}{s}\PYG{err}{o}\PYG{k+kc}{n}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{  }\PYG{n+nt}{\PYGZdq{}precisionControl\PYGZdq{}}\PYG{p}{:}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}Геометрия уточнена на основе дополнительного картографического источника.\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{  }\PYG{n+nt}{\PYGZdq{}geom\PYGZdq{}}\PYG{p}{:}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{n+nt}{\PYGZdq{}type\PYGZdq{}}\PYG{p}{:}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}MultiPolygon\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{    }\PYG{n+nt}{\PYGZdq{}coordinates\PYGZdq{}}\PYG{p}{:}\PYG{+w}{ }\PYG{p}{[[[}
+\PYG{+w}{          }\PYG{p}{[}\PYG{l+m+mf}{36.12}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{51.22}\PYG{p}{],}
+\PYG{+w}{          }\PYG{p}{[}\PYG{l+m+mf}{36.42}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{51.27}\PYG{p}{],}
+\PYG{+w}{          }\PYG{p}{[}\PYG{l+m+mf}{36.36}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{51.04}\PYG{p}{],}
+\PYG{+w}{          }\PYG{p}{[}\PYG{l+m+mf}{36.12}\PYG{p}{,}\PYG{+w}{ }\PYG{l+m+mf}{51.22}\PYG{p}{]]]]\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}

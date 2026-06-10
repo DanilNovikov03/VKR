@@ -1,0 +1,9 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k}{async}\PYG{+w}{ }\PYG{k+kd}{function}\PYG{+w}{ }\PYG{n+nx}{loadOperation}\PYG{p}{(}\PYG{n+nx}{operationId}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k+kd}{const}\PYG{+w}{ }\PYG{n+nx}{operation}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{await}\PYG{+w}{ }\PYG{n+nx}{fetchOperation}\PYG{p}{(}\PYG{n+nx}{operationId}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n+nx}{pageState}\PYG{p}{.}\PYG{n+nx}{operation}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n+nx}{operation}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{n+nx}{renderOperationInfo}\PYG{p}{(}\PYG{n+nx}{operation}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n+nx}{setMapCenterFromOperation}\PYG{p}{(}\PYG{n+nx}{operation}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}

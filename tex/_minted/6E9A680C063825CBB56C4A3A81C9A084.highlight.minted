@@ -1,0 +1,32 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{n+na}{[Fact]}
+\PYG{k}{public}\PYG{+w}{ }\PYG{k}{async}\PYG{+w}{ }\PYG{n}{Task}\PYG{+w}{ }\PYG{n+nf}{GetByIdAsync\PYGZus{}WhenWarExists\PYGZus{}ReturnsWarResponse}\PYG{p}{()}
+\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{c+c1}{// Arrange}
+\PYG{+w}{    }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{war}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{War}
+\PYG{+w}{    }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n}{Id}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{1}\PYG{p}{,}
+\PYG{+w}{        }\PYG{n}{Title}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Вторая мировая война\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{        }\PYG{n}{Summary}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+s}{\PYGZdq{}Крупнейший военный конфликт XX века\PYGZdq{}}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{};}
+
+\PYG{+w}{    }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{warRepositoryMock}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{Mock}\PYG{o}{\PYGZlt{}}\PYG{n}{IWarRepository}\PYG{o}{\PYGZgt{}}\PYG{p}{();}
+
+\PYG{+w}{    }\PYG{n}{warRepositoryMock}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{Setup}\PYG{p}{(}\PYG{n}{repo}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{repo}\PYG{p}{.}\PYG{n}{GetByIdAsync}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{))}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{ReturnsAsync}\PYG{p}{(}\PYG{n}{war}\PYG{p}{);}
+
+\PYG{+w}{    }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{warService}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{WarService}\PYG{p}{(}\PYG{n}{warRepositoryMock}\PYG{p}{.}\PYG{n}{Object}\PYG{p}{);}
+
+\PYG{+w}{    }\PYG{c+c1}{// Act}
+\PYG{+w}{    }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{result}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{await}\PYG{+w}{ }\PYG{n}{warService}\PYG{p}{.}\PYG{n}{GetByIdAsync}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{);}
+
+\PYG{+w}{    }\PYG{c+c1}{// Assert}
+\PYG{+w}{    }\PYG{n}{Assert}\PYG{p}{.}\PYG{n}{NotNull}\PYG{p}{(}\PYG{n}{result}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n}{Assert}\PYG{p}{.}\PYG{n}{Equal}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{result}\PYG{p}{.}\PYG{n}{Id}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n}{Assert}\PYG{p}{.}\PYG{n}{Equal}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Вторая мировая война\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{result}\PYG{p}{.}\PYG{n}{Title}\PYG{p}{);}
+\PYG{+w}{    }\PYG{n}{Assert}\PYG{p}{.}\PYG{n}{Equal}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Крупнейший военный конфликт XX века\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{result}\PYG{p}{.}\PYG{n}{Summary}\PYG{p}{);}
+
+\PYG{+w}{    }\PYG{n}{warRepositoryMock}\PYG{p}{.}\PYG{n}{Verify}\PYG{p}{(}\PYG{n}{repo}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{repo}\PYG{p}{.}\PYG{n}{GetByIdAsync}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{),}\PYG{+w}{ }\PYG{n}{Times}\PYG{p}{.}\PYG{n}{Once}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}
