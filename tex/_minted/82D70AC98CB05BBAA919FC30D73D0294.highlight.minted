@@ -1,0 +1,17 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k+kr}{HTTP}\PYG{o}{/}\PYG{l+m}{1.1} \PYG{l+m}{201} \PYG{n+ne}{Created}
+\PYG{n+na}{Content\PYGZhy{}Type}\PYG{o}{:} \PYG{l}{application/json \PYGZob{}}
+  \PYG{l}{\PYGZdq{}id\PYGZdq{}: 15,}
+  \PYG{l}{\PYGZdq{}warId\PYGZdq{}: 1,}
+  \PYG{l}{\PYGZdq{}warSideId\PYGZdq{}: 2,}
+  \PYG{l}{\PYGZdq{}dateControl\PYGZdq{}: \PYGZdq{}1943\PYGZhy{}07\PYGZhy{}12\PYGZdq{},}
+  \PYG{l}{\PYGZdq{}precisionControl\PYGZdq{}: \PYGZdq{}Граница зоны контроля построена по исторической карте и имеет приблизительный характер.\PYGZdq{},}
+  \PYG{l}{\PYGZdq{}geom\PYGZdq{}: \PYGZob{}}
+    \PYG{l}{\PYGZdq{}type\PYGZdq{}: \PYGZdq{}MultiPolygon\PYGZdq{},}
+    \PYG{l}{\PYGZdq{}coordinates\PYGZdq{}: [[[}
+          \PYG{l}{[36.10, 51.20],}
+          \PYG{l}{[36.40, 51.25],}
+          \PYG{l}{[36.35, 51.05],}
+          \PYG{l}{[36.10, 51.20]]]]\PYGZcb{}}
+\PYG{err}{\PYGZcb{}}
+\end{MintedVerbatim}

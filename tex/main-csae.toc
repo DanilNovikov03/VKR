@@ -3,35 +3,36 @@
 \contentsline {chapter}{\numberline {1.}ТЕОРЕТИЧЕСКИЕ ОСНОВЫ РАЗРАБОТКИ ВЕБ-ПРИЛОЖЕНИЯ ВИЗУАЛИЗАЦИИ ИСТОРИЧЕСКИХ ВОЕННЫХ КОНФЛИКТОВ}{7}{chapter.1}%
 \contentsline {section}{\numberline {1.1.}Особенности визуализации данных об исторических военных событиях}{7}{section.1.1}%
 \contentsline {section}{\numberline {1.2.}Анализ существующих программных решений и аналогичных проектов}{9}{section.1.2}%
-\contentsline {section}{\numberline {1.3.}Концептуальная модель веб-приложения визуализации данных о военных действиях «Палантир»}{13}{section.1.3}%
-\contentsline {section}{\numberline {1.4.}Обоснование выбора технологического стека}{15}{section.1.4}%
-\contentsline {subsection}{\numberline {1.4.1.}Выбор языка программирования и серверной платформы ASP.NET Core}{15}{subsection.1.4.1}%
-\contentsline {subsection}{\numberline {1.4.2.}Выбор системы управления базами данных PostgreSQL/PostGIS}{17}{subsection.1.4.2}%
-\contentsline {subsection}{\numberline {1.4.3.}Технологии платформы .NET, применяемые при разработке}{18}{subsection.1.4.3}%
-\contentsline {chapter}{\numberline {2.}ПРОЕКТИРОВАНИЕ И РЕАЛИЗАЦИЯ ВЕБ-ПРИЛОЖЕНИЯ}{20}{chapter.2}%
-\contentsline {section}{\numberline {2.1.}Архитектурное взаимодействие компонентов веб-приложения}{20}{section.2.1}%
-\contentsline {section}{\numberline {2.2.}Архитектурные решения и принципы построения серверной части веб-приложения}{21}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1.}Многоуровневая архитектура приложения}{21}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2.}Применение типовых архитектурных шаблонов}{22}{subsection.2.2.2}%
-\contentsline {section}{\numberline {2.3.}Организация взаимодействия клиентской и серверной частей}{25}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1.}Принципы REST-взаимодействия}{25}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2.}Клиентская часть приложения и формат обмена данных}{25}{subsection.2.3.2}%
-\contentsline {section}{\numberline {2.4.}Проектирование структуры базы данных}{26}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1.}Требования к БД и состав хранимой информации}{26}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2.}Структура БД и реализация БД в PostgreSQL/PostGIS}{28}{subsection.2.4.2}%
-\contentsline {section}{\numberline {2.5.}Реализация моделей и доступа к данным}{31}{section.2.5}%
-\contentsline {subsection}{\numberline {2.5.1.}Настройка Entity Framework Core и описание сущностей БД}{31}{subsection.2.5.1}%
-\contentsline {subsection}{\numberline {2.5.2.}Реализация слоя Infrastructure для работы с БД}{34}{subsection.2.5.2}%
-\contentsline {subsection}{\numberline {2.5.3.}Взаимодействие слоёв приложения при доступе к данным}{37}{subsection.2.5.3}%
-\contentsline {subsection}{\numberline {2.5.4.}Примеры запросов к БД через EF Core}{40}{subsection.2.5.4}%
-\contentsline {section}{\numberline {2.6.}Реализация серверного API}{42}{section.2.6}%
-\contentsline {chapter}{\numberline {3.}РЕАЛИЗАЦИЯ КЛИЕНТСКОЙ ЧАСТИ, ТЕСТИРОВАНИЕ И РАЗВЁРТЫВАНИЕ ВЕБ-ПРИЛОЖЕНИЯ}{49}{chapter.3}%
-\contentsline {section}{\numberline {3.1.}Реализация клиентской части веб-приложения}{49}{section.3.1}%
-\contentsline {section}{\numberline {3.2.}Реализация картографической визуализации операции}{51}{section.3.2}%
-\contentsline {section}{\numberline {3.3.}Unit-тестирование серверной части приложения}{60}{section.3.3}%
-\contentsline {section}{\numberline {3.4.}Тестирование взаимодействия клиентской, серверной части и базы данных}{64}{section.3.4}%
-\contentsline {section}{\numberline {3.5.}Развёртывание веб-приложения на сервере}{67}{section.3.5}%
-\contentsline {section}{\numberline {3.6.}Проверка работоспособности приложения после развёртывания на сервере}{69}{section.3.6}%
-\contentsline {chapter}{ЗАКЛЮЧЕНИЕ}{71}{chapter*.49}%
-\contentsline {chapter}{СПИСОК ИСПОЛЬЗОВАННОЙ ЛИТЕРАТУРЫ}{73}{chapter*.49}%
+\contentsline {section}{\numberline {1.3.}Концептуальная модель веб-приложения визуализации данных о военных действиях «Палантир»}{14}{section.1.3}%
+\contentsline {section}{\numberline {1.4.}Обоснование выбора технологического стека}{16}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1.}Выбор языка программирования и серверной платформы ASP.NET Core}{16}{subsection.1.4.1}%
+\contentsline {subsection}{\numberline {1.4.2.}Выбор системы управления базами данных PostgreSQL/PostGIS}{18}{subsection.1.4.2}%
+\contentsline {subsection}{\numberline {1.4.3.}Технологии платформы .NET, применяемые при разработке}{19}{subsection.1.4.3}%
+\contentsline {chapter}{\numberline {2.}ПРОЕКТИРОВАНИЕ И РЕАЛИЗАЦИЯ ВЕБ-ПРИЛОЖЕНИЯ}{21}{chapter.2}%
+\contentsline {section}{\numberline {2.1.}Архитектурное взаимодействие компонентов веб-приложения}{21}{section.2.1}%
+\contentsline {section}{\numberline {2.2.}Архитектурные решения и принципы построения серверной части веб-приложения}{22}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1.}Многоуровневая архитектура приложения}{22}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2.}Применение типовых архитектурных шаблонов}{23}{subsection.2.2.2}%
+\contentsline {section}{\numberline {2.3.}Организация взаимодействия клиентской и серверной частей}{26}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1.}Принципы REST-взаимодействия}{26}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2.}Клиентская часть приложения и формат обмена данных}{26}{subsection.2.3.2}%
+\contentsline {section}{\numberline {2.4.}Проектирование структуры базы данных}{27}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1.}Требования к БД и состав хранимой информации}{27}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2.}Структура БД и реализация БД в PostgreSQL/PostGIS}{29}{subsection.2.4.2}%
+\contentsline {section}{\numberline {2.5.}Реализация моделей и доступа к данным}{33}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1.}Настройка Entity Framework Core и описание сущностей БД}{33}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2.}Реализация слоя Infrastructure для работы с БД}{36}{subsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.5.3.}Взаимодействие слоёв приложения при доступе к данным}{39}{subsection.2.5.3}%
+\contentsline {subsection}{\numberline {2.5.4.}Примеры запросов к БД через EF Core}{42}{subsection.2.5.4}%
+\contentsline {section}{\numberline {2.6.}Реализация серверного API}{44}{section.2.6}%
+\contentsline {chapter}{\numberline {3.}РЕАЛИЗАЦИЯ КЛИЕНТСКОЙ ЧАСТИ, ТЕСТИРОВАНИЕ И РАЗВЁРТЫВАНИЕ ВЕБ-ПРИЛОЖЕНИЯ}{52}{chapter.3}%
+\contentsline {section}{\numberline {3.1.}Реализация клиентской части веб-приложения}{52}{section.3.1}%
+\contentsline {section}{\numberline {3.2.}Реализация картографической визуализации операции}{54}{section.3.2}%
+\contentsline {section}{\numberline {3.3.}Unit-тестирование серверной части приложения}{64}{section.3.3}%
+\contentsline {section}{\numberline {3.4.}Тестирование взаимодействия клиентской, серверной части и базы данных}{69}{section.3.4}%
+\contentsline {section}{\numberline {3.5.}Развёртывание веб-приложения на сервере}{72}{section.3.5}%
+\contentsline {section}{\numberline {3.6.}Проверка работоспособности приложения после развёртывания на сервере}{74}{section.3.6}%
+\contentsline {chapter}{ЗАКЛЮЧЕНИЕ}{76}{chapter*.49}%
+\contentsline {chapter}{СПИСОК ИСПОЛЬЗОВАННОЙ ЛИТЕРАТУРЫ}{78}{chapter*.49}%
+\contentsline {chapter}{ПРИЛОЖЕНИЕ}{81}{section*.52}%
 \contentsfinish 

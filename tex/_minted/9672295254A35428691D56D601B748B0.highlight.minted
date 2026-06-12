@@ -1,0 +1,10 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k+kr}{HTTP}\PYG{o}{/}\PYG{l+m}{1.1} \PYG{l+m}{201} \PYG{n+ne}{Created}
+\PYG{n+na}{Content\PYGZhy{}Type}\PYG{o}{:} \PYG{l}{application/json \PYGZob{}}
+  \PYG{l}{\PYGZdq{}id\PYGZdq{}: 1,}
+  \PYG{l}{\PYGZdq{}title\PYGZdq{}: \PYGZdq{}Великая Отечественная война\PYGZdq{},}
+  \PYG{l}{\PYGZdq{}startDate\PYGZdq{}: \PYGZdq{}1941\PYGZhy{}06\PYGZhy{}22\PYGZdq{},}
+  \PYG{l}{\PYGZdq{}endDate\PYGZdq{}: \PYGZdq{}1945\PYGZhy{}05\PYGZhy{}09\PYGZdq{},}
+  \PYG{l}{\PYGZdq{}summary\PYGZdq{}: \PYGZdq{}Военный конфликт между СССР и странами нацистского блока в рамках Второй мировой войны.\PYGZdq{}}
+\PYG{err}{\PYGZcb{}}
+\end{MintedVerbatim}

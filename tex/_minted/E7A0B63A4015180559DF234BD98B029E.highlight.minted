@@ -1,0 +1,28 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k}{public}\PYG{+w}{ }\PYG{k}{class}\PYG{+w}{ }\PYG{n+nc}{ArmyRepository}\PYG{+w}{ }\PYG{p}{:}\PYG{+w}{ }\PYG{n}{IArmyRepository}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{readonly}\PYG{+w}{ }\PYG{n}{PalantirDbContext}\PYG{+w}{ }\PYG{n}{\PYGZus{}dbContext}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{n+nf}{ArmyRepository}\PYG{p}{(}\PYG{n}{PalantirDbContext}\PYG{+w}{ }\PYG{n}{dbContext}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n}{\PYGZus{}dbContext}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{dbContext}\PYG{p}{;}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{k}{async}\PYG{+w}{ }\PYG{n}{Task}\PYG{o}{\PYGZlt{}}\PYG{n}{List}\PYG{o}{\PYGZlt{}}\PYG{n}{Army}\PYG{o}{\PYGZgt{}\PYGZgt{}}\PYG{+w}{ }\PYG{n}{GetAllAsync}\PYG{p}{()}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}
+\PYG{+w}{        }\PYG{k}{await}\PYG{+w}{ }\PYG{n}{\PYGZus{}dbContext}\PYG{p}{.}\PYG{n}{armies}\PYG{p}{.}\PYG{n}{ToListAsync}\PYG{o}{\PYGZlt{}}\PYG{n}{Army}\PYG{o}{\PYGZgt{}}\PYG{p}{();}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{k}{async}\PYG{+w}{ }\PYG{n}{Task}\PYG{o}{\PYGZlt{}}\PYG{n}{Army}\PYG{o}{?\PYGZgt{}}\PYG{+w}{ }\PYG{n}{GetByIdAsync}\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{id}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}
+\PYG{+w}{        }\PYG{k}{await}\PYG{+w}{ }\PYG{n}{\PYGZus{}dbContext}\PYG{p}{.}\PYG{n}{armies}
+\PYG{+w}{            }\PYG{p}{.}\PYG{n}{FirstOrDefaultAsync}\PYG{p}{(}\PYG{n}{a}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{a}\PYG{p}{.}\PYG{n}{army\PYGZus{}id}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{n}{id}\PYG{p}{);}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{k}{async}\PYG{+w}{ }\PYG{n}{Task}\PYG{+w}{ }\PYG{n+nf}{AddAsync}\PYG{p}{(}\PYG{n}{Army}\PYG{+w}{ }\PYG{n}{army}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k}{await}\PYG{+w}{ }\PYG{n}{\PYGZus{}dbContext}\PYG{p}{.}\PYG{n}{armies}\PYG{p}{.}\PYG{n}{AddAsync}\PYG{p}{(}\PYG{n}{army}\PYG{p}{);}
+\PYG{+w}{        }\PYG{k}{await}\PYG{+w}{ }\PYG{n}{\PYGZus{}dbContext}\PYG{p}{.}\PYG{n}{SaveChangesAsync}\PYG{p}{();}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{k}{async}\PYG{+w}{ }\PYG{n}{Task}\PYG{+w}{ }\PYG{n+nf}{UpdateAsync}\PYG{p}{(}\PYG{n}{Army}\PYG{+w}{ }\PYG{n}{army}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n}{\PYGZus{}dbContext}\PYG{p}{.}\PYG{n}{armies}\PYG{p}{.}\PYG{n}{Update}\PYG{p}{(}\PYG{n}{army}\PYG{p}{);}
+\PYG{+w}{        }\PYG{k}{await}\PYG{+w}{ }\PYG{n}{\PYGZus{}dbContext}\PYG{p}{.}\PYG{n}{SaveChangesAsync}\PYG{p}{();}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{k}{async}\PYG{+w}{ }\PYG{n}{Task}\PYG{+w}{ }\PYG{n+nf}{DeleteAsync}\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{id}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{army}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{await}\PYG{+w}{ }\PYG{n}{\PYGZus{}dbContext}\PYG{p}{.}\PYG{n}{armies}\PYG{p}{.}\PYG{n}{FindAsync}\PYG{p}{(}\PYG{n}{id}\PYG{p}{);}
+\PYG{+w}{        }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{army}\PYG{+w}{ }\PYG{o}{!=}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{n}{\PYGZus{}dbContext}\PYG{p}{.}\PYG{n}{armies}\PYG{p}{.}\PYG{n}{Remove}\PYG{p}{(}\PYG{n}{army}\PYG{p}{);}
+\PYG{+w}{            }\PYG{k}{await}\PYG{+w}{ }\PYG{n}{\PYGZus{}dbContext}\PYG{p}{.}\PYG{n}{SaveChangesAsync}\PYG{p}{();}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}
