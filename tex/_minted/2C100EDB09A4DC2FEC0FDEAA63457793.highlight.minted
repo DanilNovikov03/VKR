@@ -1,0 +1,43 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{n+na}{[ApiController]}
+\PYG{n+na}{[Route(\PYGZdq{}api/control\PYGZhy{}zones\PYGZdq{})]}
+\PYG{k}{public}\PYG{+w}{ }\PYG{k}{class}\PYG{+w}{ }\PYG{n+nc}{ControlZonesController}\PYG{+w}{ }\PYG{p}{:}\PYG{+w}{ }\PYG{n}{ControllerBase}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{readonly}\PYG{+w}{ }\PYG{n}{IControlZoneService}\PYG{+w}{ }\PYG{n}{\PYGZus{}zoneService}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{n+nf}{ControlZonesController}\PYG{p}{(}\PYG{n}{IControlZoneService}\PYG{+w}{ }\PYG{n}{controlZoneService}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}
+\PYG{+w}{        }\PYG{n}{\PYGZus{}zoneService}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{controlZoneService}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{n+na}{[HttpGet(\PYGZdq{}\PYGZob{}id:int\PYGZcb{}\PYGZdq{})]}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{k}{async}\PYG{+w}{ }\PYG{n}{Task}\PYG{o}{\PYGZlt{}}\PYG{n}{ActionResult}\PYG{o}{\PYGZlt{}}\PYG{n}{ControlZoneResponse}\PYG{o}{\PYGZgt{}\PYGZgt{}}\PYG{+w}{ }\PYG{n}{GetById}\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{id}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{zone}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{await}\PYG{+w}{ }\PYG{n}{\PYGZus{}zoneService}\PYG{p}{.}\PYG{n}{GetByIdAsync}\PYG{p}{(}\PYG{n}{id}\PYG{p}{);}
+\PYG{+w}{        }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{zone}\PYG{+w}{ }\PYG{k}{is}\PYG{+w}{ }\PYG{k}{null}\PYG{+w}{ }\PYG{o}{?}\PYG{+w}{ }\PYG{n}{NotFound}\PYG{p}{()}\PYG{+w}{ }\PYG{p}{:}\PYG{+w}{ }\PYG{n}{Ok}\PYG{p}{(}\PYG{n}{zone}\PYG{p}{);}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{    }\PYG{n+na}{[HttpGet(\PYGZdq{}\PYGZob{}warId:int\PYGZcb{}/\PYGZob{}date:datetime\PYGZcb{}\PYGZdq{})]}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{k}{async}\PYG{+w}{ }\PYG{n}{Task}\PYG{o}{\PYGZlt{}}\PYG{n}{ActionResult}\PYG{o}{\PYGZlt{}}\PYG{n}{List}\PYG{o}{\PYGZlt{}}\PYG{n}{ControlZoneResponse}\PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}}
+\PYG{+w}{        }\PYG{n}{GetByWarDateAsync}\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{warId}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{DateOnly}\PYG{+w}{ }\PYG{n}{date}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{zones}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{await}\PYG{+w}{ }\PYG{n}{\PYGZus{}zoneService}\PYG{p}{.}\PYG{n}{GetByWarDateAsync}\PYG{p}{(}\PYG{n}{warId}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{date}\PYG{p}{);}
+\PYG{+w}{        }\PYG{k}{return}\PYG{+w}{ }\PYG{n+nf}{Ok}\PYG{p}{(}\PYG{n}{zones}\PYG{p}{);}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{    }\PYG{n+na}{[HttpPost]}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{k}{async}\PYG{+w}{ }\PYG{n}{Task}\PYG{o}{\PYGZlt{}}\PYG{n}{ActionResult}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{Add}\PYG{p}{(}\PYG{n}{CreateControlZoneRequest}\PYG{+w}{ }\PYG{n}{zoneRequest}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{response}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{await}\PYG{+w}{ }\PYG{n}{\PYGZus{}zoneService}\PYG{p}{.}\PYG{n}{AddAsync}\PYG{p}{(}\PYG{n}{zoneRequest}\PYG{p}{);}
+\PYG{+w}{        }\PYG{k}{return}\PYG{+w}{ }\PYG{n+nf}{CreatedAtAction}\PYG{p}{(}\PYG{k}{nameof}\PYG{p}{(}\PYG{n}{GetById}\PYG{p}{),}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{n}{id}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{response}\PYG{p}{.}\PYG{n}{Id}\PYG{+w}{ }\PYG{p}{\PYGZcb{},}\PYG{+w}{ }\PYG{n}{response}\PYG{p}{);}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{    }\PYG{n+na}{[HttpPut(\PYGZdq{}\PYGZob{}id:int\PYGZcb{}\PYGZdq{})]}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{k}{async}\PYG{+w}{ }\PYG{n}{Task}\PYG{o}{\PYGZlt{}}\PYG{n}{ActionResult}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{Update}\PYG{p}{(}
+\PYG{+w}{        }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{id}\PYG{p}{,}
+\PYG{+w}{        }\PYG{n}{UpdateControlZoneRequest}\PYG{+w}{ }\PYG{n}{zoneRequest}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{response}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{await}\PYG{+w}{ }\PYG{n}{\PYGZus{}zoneService}\PYG{p}{.}\PYG{n}{UpdateAsync}\PYG{p}{(}\PYG{n}{id}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{zoneRequest}\PYG{p}{);}
+\PYG{+w}{        }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{response}\PYG{+w}{ }\PYG{k}{is}\PYG{+w}{ }\PYG{k}{null}\PYG{+w}{ }\PYG{o}{?}\PYG{+w}{ }\PYG{n}{NotFound}\PYG{p}{()}\PYG{+w}{ }\PYG{p}{:}\PYG{+w}{ }\PYG{n}{NoContent}\PYG{p}{();}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{    }\PYG{n+na}{[HttpDelete(\PYGZdq{}\PYGZob{}id:int\PYGZcb{}\PYGZdq{})]}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{k}{async}\PYG{+w}{ }\PYG{n}{Task}\PYG{o}{\PYGZlt{}}\PYG{n}{ActionResult}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{Delete}\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{id}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k}{await}\PYG{+w}{ }\PYG{n}{\PYGZus{}zoneService}\PYG{p}{.}\PYG{n}{DeleteAsync}\PYG{p}{(}\PYG{n}{id}\PYG{p}{);}
+\PYG{+w}{        }\PYG{k}{return}\PYG{+w}{ }\PYG{n+nf}{NoContent}\PYG{p}{();}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}

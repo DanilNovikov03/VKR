@@ -1,0 +1,3 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k}{CREATE}\PYG{+w}{ }\PYG{k}{INDEX}\PYG{+w}{ }\PYG{n}{idx\PYGZus{}control\PYGZus{}zones\PYGZus{}geom}\PYG{+w}{ }\PYG{k}{ON}\PYG{+w}{ }\PYG{n}{control\PYGZus{}zones}\PYG{+w}{ }\PYG{k}{USING}\PYG{+w}{ }\PYG{n}{GIST}\PYG{p}{(}\PYG{n}{geom}\PYG{p}{);}
+\end{MintedVerbatim}

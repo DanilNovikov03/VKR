@@ -1,0 +1,81 @@
+{
+"command": "highlight",
+"code":
+"""\
+public class ControlZoneService : IControlZoneService {
+    private readonly IControlZoneRepository _repository;
+
+    public ControlZoneService(IControlZoneRepository repository) =>
+        _repository = repository;
+
+    public async Task<ControlZoneResponse?> GetByIdAsync(int controlZoneId) {
+        var zone = await _repository.GetByIdAsync(controlZoneId);
+        return zone is null ? null : Response(zone);
+    }
+    public async Task<List<ControlZoneResponse>> GetByWarDateAsync( int warId,DateOnly date) {
+        var zones = await _repository.GetByWarDateAsync(warId, date);
+        return zones.Select(zone => Response(zone)).ToList();
+    }
+    public async Task<ControlZoneResponse> AddAsync(CreateControlZoneRequest controlZoneRequest) {
+        var request = controlZoneRequest;
+        request.Geom.SRID = 4326;
+        var zone = new ControlZone {
+            war_id = request.WarId,
+            war_side_id = request.WarSideId,
+            date_control = request.DateControl,
+            precision_control = request.PrecisionControl,
+            geom = request.Geom
+        };
+        await _repository.AddAsync(zone);
+        return Response(zone);
+    }
+    public async Task DeleteAsync(int controlZoneId) {
+        var zone = await _repository.GetByIdAsync(controlZoneId);
+        if (zone == null) Exception();
+        await _repository.DeleteAsync(controlZoneId);
+    }
+}
+""",
+"pyopt.lexer": "csharp",
+"pyopt.commandprefix": "PYG",
+"pyopt.autogobble": "false",
+"pyopt.encoding": "utf8",
+"pyopt.extrakeywords": "",
+"pyopt.extrakeywordsconstant": "",
+"pyopt.extrakeywordsdeclaration": "",
+"pyopt.extrakeywordsnamespace": "",
+"pyopt.extrakeywordspseudo": "",
+"pyopt.extrakeywordsreserved": "",
+"pyopt.extrakeywordstype": "",
+"pyopt.funcnamehighlighting": "true",
+"pyopt.gobble": "0",
+"pyopt.gobblefilter": "0",
+"pyopt.keywordcase": "none",
+"pyopt.literalenvname": "MintedVerbatim",
+"pyopt.mathescape": "true",
+"pyopt.python3": "true",
+"pyopt.rangeregexmatchnumber": "1",
+"pyopt.rangeregexdotall": "false",
+"pyopt.rangeregexmultiline": "false",
+"pyopt.startinline": "false",
+"pyopt.stripall": "false",
+"pyopt.stripnl": "false",
+"pyopt.texcl": "false",
+"pyopt.texcomments": "false",
+"pyopt.tokenmerge": "true",
+"pyopt.codetagify": "",
+"pyopt.escapeinside": "",
+"pyopt.literatecomment": "",
+"pyopt.rangestartstring": "",
+"pyopt.rangestartafterstring": "",
+"pyopt.rangestopstring": "",
+"pyopt.rangestopbeforestring": "",
+"pyopt.rangeregex": "",
+"jobname": "main-csae",
+"timestamp": "20260614154108Z",
+"currentfilepath": "",
+"currentfile": "chapter-2-csae.tex",
+"inputlineno": "709",
+"cachepath": "_minted/",
+"highlightfilename": "88DC445848EF9B82EA070D8C1A7E55F9.highlight.minted",
+}

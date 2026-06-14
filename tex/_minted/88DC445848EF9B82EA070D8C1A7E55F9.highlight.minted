@@ -1,0 +1,35 @@
+\begin{MintedVerbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{k}{public}\PYG{+w}{ }\PYG{k}{class}\PYG{+w}{ }\PYG{n+nc}{ControlZoneService}\PYG{+w}{ }\PYG{p}{:}\PYG{+w}{ }\PYG{n}{IControlZoneService}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k}{private}\PYG{+w}{ }\PYG{k}{readonly}\PYG{+w}{ }\PYG{n}{IControlZoneRepository}\PYG{+w}{ }\PYG{n}{\PYGZus{}repository}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{n+nf}{ControlZoneService}\PYG{p}{(}\PYG{n}{IControlZoneRepository}\PYG{+w}{ }\PYG{n}{repository}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}
+\PYG{+w}{        }\PYG{n}{\PYGZus{}repository}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{repository}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{k}{async}\PYG{+w}{ }\PYG{n}{Task}\PYG{o}{\PYGZlt{}}\PYG{n}{ControlZoneResponse}\PYG{o}{?\PYGZgt{}}\PYG{+w}{ }\PYG{n}{GetByIdAsync}\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{controlZoneId}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{zone}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{await}\PYG{+w}{ }\PYG{n}{\PYGZus{}repository}\PYG{p}{.}\PYG{n}{GetByIdAsync}\PYG{p}{(}\PYG{n}{controlZoneId}\PYG{p}{);}
+\PYG{+w}{        }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{zone}\PYG{+w}{ }\PYG{k}{is}\PYG{+w}{ }\PYG{k}{null}\PYG{+w}{ }\PYG{o}{?}\PYG{+w}{ }\PYG{k}{null}\PYG{+w}{ }\PYG{p}{:}\PYG{+w}{ }\PYG{n}{Response}\PYG{p}{(}\PYG{n}{zone}\PYG{p}{);}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{k}{async}\PYG{+w}{ }\PYG{n}{Task}\PYG{o}{\PYGZlt{}}\PYG{n}{List}\PYG{o}{\PYGZlt{}}\PYG{n}{ControlZoneResponse}\PYG{o}{\PYGZgt{}\PYGZgt{}}\PYG{+w}{ }\PYG{n}{GetByWarDateAsync}\PYG{p}{(}\PYG{+w}{ }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{warId}\PYG{p}{,}\PYG{n}{DateOnly}\PYG{+w}{ }\PYG{n}{date}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{zones}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{await}\PYG{+w}{ }\PYG{n}{\PYGZus{}repository}\PYG{p}{.}\PYG{n}{GetByWarDateAsync}\PYG{p}{(}\PYG{n}{warId}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{date}\PYG{p}{);}
+\PYG{+w}{        }\PYG{k}{return}\PYG{+w}{ }\PYG{n}{zones}\PYG{p}{.}\PYG{n}{Select}\PYG{p}{(}\PYG{n}{zone}\PYG{+w}{ }\PYG{o}{=\PYGZgt{}}\PYG{+w}{ }\PYG{n}{Response}\PYG{p}{(}\PYG{n}{zone}\PYG{p}{)).}\PYG{n}{ToList}\PYG{p}{();}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{k}{async}\PYG{+w}{ }\PYG{n}{Task}\PYG{o}{\PYGZlt{}}\PYG{n}{ControlZoneResponse}\PYG{o}{\PYGZgt{}}\PYG{+w}{ }\PYG{n}{AddAsync}\PYG{p}{(}\PYG{n}{CreateControlZoneRequest}\PYG{+w}{ }\PYG{n}{controlZoneRequest}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{request}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{controlZoneRequest}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{request}\PYG{p}{.}\PYG{n}{Geom}\PYG{p}{.}\PYG{n}{SRID}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{4326}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{zone}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{ControlZone}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{n}{war\PYGZus{}id}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{request}\PYG{p}{.}\PYG{n}{WarId}\PYG{p}{,}
+\PYG{+w}{            }\PYG{n}{war\PYGZus{}side\PYGZus{}id}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{request}\PYG{p}{.}\PYG{n}{WarSideId}\PYG{p}{,}
+\PYG{+w}{            }\PYG{n}{date\PYGZus{}control}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{request}\PYG{p}{.}\PYG{n}{DateControl}\PYG{p}{,}
+\PYG{+w}{            }\PYG{n}{precision\PYGZus{}control}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{request}\PYG{p}{.}\PYG{n}{PrecisionControl}\PYG{p}{,}
+\PYG{+w}{            }\PYG{n}{geom}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{request}\PYG{p}{.}\PYG{n}{Geom}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{};}
+\PYG{+w}{        }\PYG{k}{await}\PYG{+w}{ }\PYG{n}{\PYGZus{}repository}\PYG{p}{.}\PYG{n}{AddAsync}\PYG{p}{(}\PYG{n}{zone}\PYG{p}{);}
+\PYG{+w}{        }\PYG{k}{return}\PYG{+w}{ }\PYG{n+nf}{Response}\PYG{p}{(}\PYG{n}{zone}\PYG{p}{);}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{k}{public}\PYG{+w}{ }\PYG{k}{async}\PYG{+w}{ }\PYG{n}{Task}\PYG{+w}{ }\PYG{n+nf}{DeleteAsync}\PYG{p}{(}\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{controlZoneId}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{k+kt}{var}\PYG{+w}{ }\PYG{n}{zone}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{await}\PYG{+w}{ }\PYG{n}{\PYGZus{}repository}\PYG{p}{.}\PYG{n}{GetByIdAsync}\PYG{p}{(}\PYG{n}{controlZoneId}\PYG{p}{);}
+\PYG{+w}{        }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{zone}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{k}{null}\PYG{p}{)}\PYG{+w}{ }\PYG{n}{Exception}\PYG{p}{();}
+\PYG{+w}{        }\PYG{k}{await}\PYG{+w}{ }\PYG{n}{\PYGZus{}repository}\PYG{p}{.}\PYG{n}{DeleteAsync}\PYG{p}{(}\PYG{n}{controlZoneId}\PYG{p}{);}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}

@@ -8,7 +8,7 @@
 
 Серверная часть обращается к базе данных через ORM Entity Framework. Использование ORM позволяет описывать схему хранения в виде классов и конфигураций, а операции выборки формировать с помощью LINQ, что снижает объём низкоуровневого SQL-кода и повышает согласованность программной модели со структурой данных. В контексте пространственных данных применяется расширение для работы с типами PostGIS, благодаря чему геометрии могут храниться и извлекаться без ручного преобразования форматов. Механизм миграций обеспечивает контролируемое изменение схемы базы данных при развитии системы и упрощает синхронизацию структуры между средами разработки и развёртывания~\cite{efcore_overview,efcore_spatial}.
 
-Для хранения структурированных и пространственных данных применяется PostgreSQL с расширением PostGIS. Обмен данными между компонентами выполняется преимущественно в формате JSON, а пространственные объекты передаются в формате GeoJSON. Отдельно предусматривается файловое хранилище для данных, размещение которых в реляционной базе является нецелесообразным; при этом метаданные таких объектов могут храниться в базе данных и связываться с сущностями системы~\cite{postgresql_docs,postgis_manual,rfc7946}.
+Для хранения структурированных и пространственных данных применяется PostgreSQL с расширением PostGIS~\cite{postgis_manual}. Обмен данными между компонентами выполняется преимущественно в формате JSON, а пространственные объекты передаются в формате GeoJSON~\cite{rfc7946}. Отдельно предусматривается файловое хранилище для данных, размещение которых в реляционной базе является нецелесообразным; при этом метаданные таких объектов могут храниться в базе данных и связываться с сущностями системы.
 
 Общее архитектурное взаимодействие компонентов веб-приложения представлено на рисунке~\ref{fig:architecture-components}. Схема показывает связь клиентского интерфейса, серверного API, слоя доступа к данным и базы данных.
 
@@ -31,11 +31,11 @@
 \item Infrastructure (инфраструктурный уровень). Включает механизмы работы с базой данных, реализацию репозиториев, настройку ORM и взаимодействие с файловым хранилищем.
 \end{itemize}
 
-В типовом потоке обработки пользовательский запрос поступает в контроллер API, далее управление передаётся прикладному сценарию, который использует предметные сущности и обращается к инфраструктурным интерфейсам доступа к данным. Результат преобразуется в структуру передачи данных и возвращается клиенту.
+В типовом потоке обработки пользовательский запрос поступает в контроллер API, далее управление передаётся прикладному сценарию, который использует предметные сущности и обращается к инфраструктурным интерфейсам доступа к данным. Результат преобразуется в структуру передачи данных и возвращается клиенту~\cite{fowler2002patterns}.
 
 \subsection{Применение типовых архитектурных шаблонов}
 
-Реализация серверной части опирается на типовые архитектурные шаблоны проектирования, применяемые в веб-приложениях на платформе .NET. Используемые шаблоны задают структуру взаимодействия компонентов и обеспечивают разделение ответственности между уровнями системы~\cite{fowler2002patterns,gamma1994design}.
+Реализация серверной части опирается на типовые архитектурные шаблоны проектирования, применяемые в веб-приложениях на платформе .NET. Используемые шаблоны задают структуру взаимодействия компонентов и обеспечивают разделение ответственности между уровнями системы~\cite{gamma1994design}.
 
 Архитектурная модель строится на разделении компонентов по слоям: Presentation, Application, Domain и Infrastructure. Такое разграничение позволяет изолировать прикладную и предметную логику от деталей хранения данных и механизма взаимодействия по HTTP.
 
@@ -95,7 +95,7 @@ ORM и отображение сущностей реализуются сред
 
 Клиентская часть обеспечивает взаимодействие пользователя с системой: навигацию по данным, настройку отображаемых слоёв и работу с временной шкалой. Клиент формирует запросы к API и использует полученные ответы для построения визуальных представлений.
 
-Для отображения пространственных объектов клиент получает данные в формате GeoJSON и преобразует их в элементы карты. Справочные данные и метаданные передаются в формате JSON. Связь файловых данных с сущностями системы реализуется через идентификаторы и метаданные, доступные через API~\cite{rfc7946}.
+Для отображения пространственных объектов клиент получает данные в формате GeoJSON и преобразует их в элементы карты. Справочные данные и метаданные передаются в формате JSON. Связь файловых данных с сущностями системы реализуется через идентификаторы и метаданные, доступные через API.
 
 Для организации интерфейса может применяться CSS-фреймворк Bootstrap, предоставляющий набор готовых стилевых компонентов. Для картографической части фронтенда используется библиотека Leaflet, позволяющая отображать интерактивную карту, группировать пространственные объекты по слоям и обновлять их при изменении параметров запроса. Использование данных клиентских технологий рассматривается как средство ускорения разработки пользовательского интерфейса без изменения архитектурной структуры приложения.
 
@@ -119,7 +119,7 @@ ORM и отображение сущностей реализуются сред
 
 Отдельное внимание должно уделяться хранению информации об участниках конфликта и войсковых соединениях. В системе необходимо различать сторону как самостоятельную сущность и её участие в конкретной войне или операции. Для соединений, в свою очередь, важно хранить не только основные сведения, но и их положение на карте в разные моменты времени~\cite{silberschatz2019database}.
 
-С точки зрения картографической визуализации существенное значение имеют события и зоны контроля. События должны иметь дату, тип, описание и координату, а зоны контроля --- геометрию и временную привязку. Благодаря этому база данных может использоваться для отображения хода конфликта на карте и построения временной шкалы изменения обстановки~\cite{postgis_manual}.
+С точки зрения картографической визуализации существенное значение имеют события и зоны контроля. События должны иметь дату, тип, описание и координату, а зоны контроля --- геометрию и временную привязку. Благодаря этому база данных может использоваться для отображения хода конфликта на карте и построения временной шкалы изменения обстановки.
 
 Также необходимо учитывать, что исторические данные могут быть неполными или уточняться в процессе наполнения системы. Поэтому часть полей может допускать отсутствие значения, однако ключевые параметры, необходимые для идентификации и отображения данных, должны оставаться обязательными. Для пространственных данных важно предусмотреть и указание степени точности, поскольку положение объектов и границ в исторических источниках может быть приблизительным.
 
@@ -179,7 +179,7 @@ ORM и отображение сущностей реализуются сред
 \end{table}
 
 Ключевые связи в базе данных соответствуют логике предметной области. Война содержит театры военных действий, театр --- операции, а стороны конфликта связываются с войнами и операциями через промежуточные таблицы.~\cite{silberschatz2019database}.
-Пространственная составляющая вынесена в таблицы \texttt{army\_positions} и \texttt{control\_zones}, что позволяет хранить изменение положения объектов и территорий во времени~\cite{postgresql_docs}. 
+Пространственная составляющая вынесена в таблицы \texttt{army\_positions} и \texttt{control\_zones}, что позволяет хранить изменение положения объектов и территорий во времени. 
 Полный SQL-скрипт создания базы данных приведён в приложении, а в основном тексте целесообразно показать только наиболее показательные фрагменты, один из которых представлен в листинге~\ref{code:db-key-tables}.
 
 \begin{code}
@@ -215,21 +215,17 @@ CREATE TABLE control_zones (
 \end{minted}
 \end{code}
 
-В приведённом фрагменте показаны базовая таблица военных конфликтов и иерархически связанная с ней таблица театров военных действий~\cite{postgresql_docs}. 
-Таблица зон контроля демонстрирует использование пространственного типа \texttt{geometry(MultiPolygon, 4326)}~\cite{postgis_manual}. 
-Такой набор примеров позволяет показать как реляционную структуру базы данных, так и её пространственное расширение без избыточного перечисления всех таблиц.
+В приведённом фрагменте показаны базовая таблица военных конфликтов и иерархически связанная с ней таблица театров военных действий. 
+Таблица зон контроля демонстрирует использование пространственного типа \texttt{geometry(MultiPolygon, 4326)}. Такой набор примеров позволяет показать как реляционную структуру базы данных, так и её пространственное расширение без избыточного перечисления всех таблиц.
 
-Для ускорения работы с данными в базе используются индексы. В контексте веб-приложения особенно важны индексы по внешним ключам, датам и геометрическим полям, поскольку они уменьшают время выборки связанных записей и ускоряют пространственные операции~\cite{postgresql_docs}. 
-В качестве примера можно привести создание GiST-индекса для геометрии зон контроля, показанное в листинге~\ref{code:db-index-example}.
+Для ускорения работы с данными в базе используются индексы. В контексте веб-приложения особенно важны индексы по внешним ключам, датам и геометрическим полям, поскольку они уменьшают время выборки связанных записей и ускоряют пространственные операции. В качестве примера можно привести создание GiST-индекса для геометрии зон контроля, показанное в листинге~\ref{code:db-index-example}.
 
 \begin{code}
 \captionof{listing}{Пример создания пространственного индекса (полный код см. в приложении)}
 \label{code:db-index-example}
 \vspace{-0.75cm}
 \begin{minted}{sql}
-CREATE INDEX idx_control_zones_geom
-    ON control_zones
-    USING GIST(geom);
+CREATE INDEX idx_control_zones_geom ON control_zones USING GIST(geom);
 \end{minted}
 \end{code}
 
@@ -278,14 +274,8 @@ public partial class PalantirDbContext : DbContext {
 \label{code:program-dbcontext}
 \vspace{-0.75cm}
 \begin{minted}{csharp}
-var connectionString =
-    builder.Configuration.GetConnectionString(DatabaseSettings.ConnectionStringName)
-    ?? throw new InvalidOperationException("Connection string not found");
-builder.Services.AddDbContext<PalantirDbContext>(options =>
-    options.UseNpgsql(
-        connectionString,
-        o => o.UseNetTopologySuite())
-);
+var connectionString = builder.Configuration.GetConnectionString(DatabaseSettings.ConnectionStringName) ?? throw new InvalidOperationException("Connection string not found");
+builder.Services.AddDbContext<PalantirDbContext>(options => options.UseNpgsql(connectionString, o => o.UseNetTopologySuite()));
 \end{minted}
 \end{code}
 
@@ -296,9 +286,9 @@ builder.Services.AddDbContext<PalantirDbContext>(options =>
 
 Слой Infrastructure в серверной части приложения «Палантир» предназначен для реализации технических механизмов доступа к данным. В рамках данного слоя размещаются классы репозиториев, которые взаимодействуют с базой данных через \texttt{PalantirDbContext} и Entity Framework Core. За счёт этого прикладной уровень приложения не обращается к таблицам базы данных напрямую, а использует отдельные интерфейсы доступа к данным~\cite{lock_aspnet_core_in_action}.
 
-Такой подход позволяет разделить прикладную логику и детали хранения информации. Слой Application может работать с абстракциями, не зная, каким именно образом данные извлекаются из PostgreSQL: через Entity Framework Core, SQL-запросы или иной механизм. Конкретная реализация доступа к данным находится в проекте \texttt{Palantir.Infrastructure}, а интерфейсы репозиториев вынесены в каталог \texttt{Palantir.Domain/Abstraction/Infrastructure/}. Это позволяет сохранить зависимость прикладной логики от интерфейсов, а не от конкретных инфраструктурных классов~\cite{lock_aspnet_core_in_action}.
+Такой подход позволяет разделить прикладную логику и детали хранения информации. Слой Application может работать с абстракциями, не зная, каким именно образом данные извлекаются из PostgreSQL: через Entity Framework Core, SQL-запросы или иной механизм. Конкретная реализация доступа к данным находится в проекте \texttt{Palantir.Infrastructure}, а интерфейсы репозиториев вынесены в каталог \texttt{Palantir.Domain/Abstraction/Infrastructure/}. Это позволяет сохранить зависимость прикладной логики от интерфейсов, а не от конкретных инфраструктурных классов.
 
-Основным элементом слоя Infrastructure являются репозитории, отвечающие за доступ к данным по основным направлениям предметной области. Для каждой ключевой группы таблиц в проекте предусмотрены интерфейсы и их реализации, работающие через \texttt{PalantirDbContext}. Такая организация позволяет прикладному слою обращаться к данным через интерфейсы, не связывая бизнес-логику с конкретными средствами Entity Framework Core~\cite{fowler_repository}.
+Основным элементом слоя Infrastructure являются репозитории, отвечающие за доступ к данным по основным направлениям предметной области. Для каждой ключевой группы таблиц в проекте предусмотрены интерфейсы и их реализации, работающие через \texttt{PalantirDbContext}. Такая организация позволяет прикладному слою обращаться к данным через интерфейсы, не связывая бизнес-логику с конкретными средствами Entity Framework Core.
 
 Репозитории имеют схожую структуру: они получают экземпляр \texttt{PalantirDbContext} через внедрение зависимостей, обращаются к соответствующим наборам \texttt{DbSet} и выполняют асинхронные операции чтения и изменения данных. В результате для прикладного слоя унифицируется работа с конфликтами, театрами военных действий, операциями, сторонами, событиями, позициями войск и зонами контроля.
 
@@ -332,14 +322,10 @@ public interface IArmyRepository {
 \begin{minted}{csharp}
 public class ArmyRepository : IArmyRepository {   
     private readonly PalantirDbContext _dbContext;
-    public ArmyRepository(PalantirDbContext dbContext) {
-        _dbContext = dbContext;
-    }
-    public async Task<List<Army>> GetAllAsync() =>
-        await _dbContext.armies.ToListAsync<Army>();
-    public async Task<Army?> GetByIdAsync(int id) =>
-        await _dbContext.armies
-            .FirstOrDefaultAsync(a => a.army_id == id);
+    public ArmyRepository(PalantirDbContext dbContext) { _dbContext = dbContext; }
+
+    public async Task<List<Army>> GetAllAsync() => await _dbContext.armies.ToListAsync<Army>();
+    public async Task<Army?> GetByIdAsync(int id) => await _dbContext.armies.FirstOrDefaultAsync(a => a.army_id == id);
     public async Task AddAsync(Army army) {
         await _dbContext.armies.AddAsync(army);
         await _dbContext.SaveChangesAsync();
@@ -403,7 +389,7 @@ Infrastructure & Реализация технического доступа к
 \end{tabular}
 \end{table}
 
-После получения данных из базы репозиторий возвращает результат прикладному уровню. Далее данные могут быть преобразованы в DTO или response-модели, предназначенные для передачи клиентской части. Такое преобразование необходимо потому, что структура внутренней модели базы данных не всегда должна совпадать со структурой ответа API. Например, для клиентского интерфейса может быть важен только ограниченный набор полей, а для карты требуется представление пространственного объекта в формате GeoJSON~\cite{rfc7946}.
+После получения данных из базы репозиторий возвращает результат прикладному уровню. Далее данные могут быть преобразованы в DTO или response-модели, предназначенные для передачи клиентской части. Такое преобразование необходимо потому, что структура внутренней модели базы данных не всегда должна совпадать со структурой ответа API. Например, для клиентского интерфейса может быть важен только ограниченный набор полей, а для карты требуется представление пространственного объекта в формате GeoJSON.
 
 Обратный путь результата проходит через те же архитектурные границы. Infrastructure возвращает данные прикладному уровню, Application подготавливает ответ в соответствии со сценарием использования, Presentation формирует HTTP-ответ, а клиентская часть получает данные в формате JSON или GeoJSON. Таким образом, слой Infrastructure скрывает технические детали хранения данных, слой Domain задаёт сущности и абстракции, слой Application связывает пользовательские сценарии с доступом к данным, а слой Presentation выполняет роль внешней точки взаимодействия с клиентом.
 
@@ -425,14 +411,8 @@ Entity Framework Core используется в серверной части 
 \vspace{-0.75cm}
 \begin{minted}{csharp}
 var army = await armyRepository.GetByIdAsync(id);
-if (army == null) {
-    return null;
-}
-var response = new {
-    Id = army.army_id,
-    Title = army.title,
-    Type = army.type
-};
+if (army == null) return null;
+var response = new { Id = army.army_id, Title = army.title, Type = army.type };
 \end{minted}
 \end{code}
 
@@ -445,9 +425,7 @@ var response = new {
 \label{code:control-zone-query-example}
 \vspace{-0.75cm}
 \begin{minted}{csharp}
-var zones = await dbContext.control_zones
-    .Where(zone => zone.date_control <= selectedDate)
-    .ToListAsync();
+var zones = await dbContext.control_zones.Where(zone => zone.date_control == selectedDate).ToListAsync();
 \end{minted}
 \end{code}
 
@@ -457,7 +435,7 @@ var zones = await dbContext.control_zones
 
 \section{Реализация серверного API}
 
-Для взаимодействия клиентской части веб-приложения с серверной частью реализуется программный интерфейс API. Серверное API предназначено для приёма запросов от клиента, обработки переданных параметров, обращения к прикладной логике и возвращения данных в формате, пригодном для дальнейшего отображения в пользовательском интерфейсе~\cite{aspnet_docs}.
+Для взаимодействия клиентской части веб-приложения с серверной частью реализуется программный интерфейс API. Серверное API предназначено для приёма запросов от клиента, обработки переданных параметров, обращения к прикладной логике и возвращения данных в формате, пригодном для дальнейшего отображения в пользовательском интерфейсе.
 
 В рамках проекта «Палантир» API используется для работы с основными сущностями предметной области: войнами, сторонами конфликта, зонами контроля, операциями и другими объектами, связанными с отображением пространственно-временных данных. Клиентская часть отправляет HTTP-запросы к серверу, после чего сервер возвращает структурированный ответ, содержащий необходимые данные.
 
@@ -513,8 +491,7 @@ public record class WarResponse(
 \label{code:war-create-request-api}
 \vspace{-0.75cm}
 \begin{minted}{json}
-POST /api/wars
-Content-Type: application/json {
+{
   "title": "Великая Отечественная война",
   "startDate": "1941-06-22",
   "endDate": "1945-05-09",
@@ -529,9 +506,8 @@ Content-Type: application/json {
 \captionof{listing}{Пример ответа после создания записи о войне}
 \label{code:war-create-response-api}
 \vspace{-0.75cm}
-\begin{minted}{http}
-HTTP/1.1 201 Created
-Content-Type: application/json {
+\begin{minted}{json}
+{
   "id": 1,
   "title": "Великая Отечественная война",
   "startDate": "1941-06-22",
@@ -605,8 +581,7 @@ public record class ControlZoneResponse(
 \label{code:control-zone-create-request-api}
 \vspace{-0.75cm}
 \begin{minted}{json}
-POST /api/control-zones
-Content-Type: application/json {
+{
   "warId": 1,
   "warSideId": 2,
   "dateControl": "1943-07-12",
@@ -628,9 +603,8 @@ Content-Type: application/json {
 \captionof{listing}{Пример ответа после создания зоны контроля}
 \label{code:control-zone-create-response-api}
 \vspace{-0.75cm}
-\begin{minted}{http}
-HTTP/1.1 201 Created
-Content-Type: application/json {
+\begin{minted}{json}
+{
   "id": 15,
   "warId": 1,
   "warSideId": 2,
@@ -654,8 +628,7 @@ Content-Type: application/json {
 \label{code:control-zone-update-request-api}
 \vspace{-0.75cm}
 \begin{minted}{json}
-PUT /api/control-zones/15
-Content-Type: application/json {
+{
   "precisionControl": "Геометрия уточнена на основе дополнительного картографического источника.",
   "geom": {
     "type": "MultiPolygon",
@@ -672,4 +645,106 @@ Content-Type: application/json {
 
 Использование отдельных моделей запросов и ответов позволяет явно определить границы взаимодействия между клиентом и сервером. Клиентская часть не работает напрямую с таблицами базы данных, а взаимодействует с API через заранее определённые контракты. Серверная часть, в свою очередь, принимает входные данные, выполняет проверку, обращается к базе данных через слой инфраструктуры и возвращает результат в виде ответа.
 
-Таким образом, реализация серверного API обеспечивает связь между пользовательским интерфейсом, прикладной логикой и базой данных. API выступает промежуточным уровнем, который принимает HTTP-запросы, преобразует входные данные в структуры приложения, выполняет необходимые операции и возвращает клиенту данные в унифицированном формате. Это соответствует выбранной клиент-серверной архитектуре и обеспечивает возможность дальнейшего расширения системы за счёт добавления новых маршрутов, моделей запросов и моделей ответов.
+Для демонстрации реализации серверного API рассмотрим обработку запросов, связанных с зонами контроля. Данный пример является показательным для веб-приложения «Палантир», поскольку зона контроля относится к пространственно-временным объектам и содержит не только обычные атрибуты, но и геометрию территории, дату фиксации и принадлежность к стороне конфликта. Фрагмент контроллера, отвечающего за внешний HTTP-интерфейс работы с зонами контроля, приведён в листинге~\ref{code:control-zones-controller-api}.
+
+\begin{code}
+\captionof{listing}{Фрагмент контроллера \texttt{ControlZonesController}}
+\label{code:control-zones-controller-api}
+\vspace{-0.75cm}
+\begin{minted}{csharp}
+[ApiController]
+[Route("api/control-zones")]
+public class ControlZonesController : ControllerBase {
+    private readonly IControlZoneService _zoneService;
+
+    public ControlZonesController(IControlZoneService controlZoneService) =>
+        _zoneService = controlZoneService;
+
+    [HttpGet("{id:int}")]
+    public async Task<ActionResult<ControlZoneResponse>> GetById(int id) {
+        var zone = await _zoneService.GetByIdAsync(id);
+        return zone is null ? NotFound() : Ok(zone);
+    }
+
+    [HttpGet("{warId:int}/{date:datetime}")]
+    public async Task<ActionResult<List<ControlZoneResponse>>>
+        GetByWarDateAsync(int warId, DateOnly date) {
+        var zones = await _zoneService.GetByWarDateAsync(warId, date);
+        return Ok(zones);
+    }
+
+    [HttpPost]
+    public async Task<ActionResult> Add(CreateControlZoneRequest zoneRequest) {
+        var response = await _zoneService.AddAsync(zoneRequest);
+        return CreatedAtAction(nameof(GetById), new { id = response.Id }, response);
+    }
+
+    [HttpPut("{id:int}")]
+    public async Task<ActionResult> Update(
+        int id,
+        UpdateControlZoneRequest zoneRequest) {
+        var response = await _zoneService.UpdateAsync(id, zoneRequest);
+        return response is null ? NotFound() : NoContent();
+    }
+
+    [HttpDelete("{id:int}")]
+    public async Task<ActionResult> Delete(int id) {
+        await _zoneService.DeleteAsync(id);
+        return NoContent();
+    }
+}
+\end{minted}
+\end{code}
+
+Контроллер \texttt{ControlZonesController} относится к уровню Presentation и принимает HTTP-запросы от клиентской части приложения. При этом он не обращается напрямую к базе данных: передача обработки выполняется через интерфейс \texttt{IControlZoneService}, что соответствует принципу разделения ответственности между уровнем представления и прикладной логикой. Метод \texttt{GetById} возвращает зону контроля по идентификатору, а метод \texttt{GetByWarDateAsync} формирует ответ со списком зон контроля для заданной войны и даты.
+
+Метод \texttt{Add} отвечает за создание новой зоны контроля и возвращает результат с помощью \texttt{CreatedAtAction}, что позволяет указать адрес получения созданного ресурса. Метод \texttt{Update} обновляет существующую зону контроля, а метод \texttt{Delete} удаляет запись по идентификатору. Таким образом, контроллер задаёт внешний HTTP-интерфейс для основных операций с зонами контроля и передаёт выполнение прикладных действий сервисному уровню.
+
+Сервис \texttt{ControlZoneService} относится к прикладному уровню приложения. Он выполняет преобразование входных моделей запроса во внутренние сущности приложения, вызывает методы репозитория и формирует модели ответа, предназначенные для передачи клиентской части. Фрагмент реализации сервиса приведён в листинге~\ref{code:control-zone-service-api}.
+
+\begin{code}
+\captionof{listing}{Фрагмент сервиса \texttt{ControlZoneService}}
+\label{code:control-zone-service-api}
+\vspace{-0.75cm}
+\begin{minted}{csharp}
+public class ControlZoneService : IControlZoneService {
+    private readonly IControlZoneRepository _repository;
+
+    public ControlZoneService(IControlZoneRepository repository) =>
+        _repository = repository;
+
+    public async Task<ControlZoneResponse?> GetByIdAsync(int controlZoneId) {
+        var zone = await _repository.GetByIdAsync(controlZoneId);
+        return zone is null ? null : Response(zone);
+    }
+    public async Task<List<ControlZoneResponse>> GetByWarDateAsync( int warId,DateOnly date) {
+        var zones = await _repository.GetByWarDateAsync(warId, date);
+        return zones.Select(zone => Response(zone)).ToList();
+    }
+    public async Task<ControlZoneResponse> AddAsync(CreateControlZoneRequest controlZoneRequest) {
+        var request = controlZoneRequest;
+        request.Geom.SRID = 4326;
+        var zone = new ControlZone {
+            war_id = request.WarId,
+            war_side_id = request.WarSideId,
+            date_control = request.DateControl,
+            precision_control = request.PrecisionControl,
+            geom = request.Geom
+        };
+        await _repository.AddAsync(zone);
+        return Response(zone);
+    }
+    public async Task DeleteAsync(int controlZoneId) {
+        var zone = await _repository.GetByIdAsync(controlZoneId);
+        if (zone == null) Exception();
+        await _repository.DeleteAsync(controlZoneId);
+    }
+}
+\end{minted}
+\end{code}
+
+Сервис \texttt{ControlZoneService} использует интерфейс \texttt{IControlZoneRepository}, через который выполняется обращение к инфраструктурному уровню. Метод \texttt{GetByIdAsync} получает зону контроля по идентификатору и преобразует её в \texttt{ControlZoneResponse}. Метод \texttt{GetByWarDateAsync} возвращает список зон контроля по войне и дате.
+
+Метод \texttt{AddAsync} создаёт сущность \texttt{ControlZone} на основе модели \texttt{CreateControlZoneRequest}. При создании объекта для геометрии задаётся значение \texttt{SRID = 4326}, соответствующее системе координат WGS 84, применяемой в веб-картографических приложениях. Метод \texttt{DeleteAsync} также сначала проверяет наличие записи, а затем удаляет её через репозиторий. Метод \texttt{Response} преобразует внутреннюю сущность \texttt{ControlZone} в модель \texttt{ControlZoneResponse}; благодаря использованию DTO и response-моделей клиентская часть не работает напрямую с entity-моделью базы данных.
+
+Таким образом, на примере \texttt{ControlZonesController} и \texttt{ControlZoneService} показан путь обработки запроса в серверной части приложения. Клиентская часть отправляет HTTP-запрос к контроллеру, контроллер передаёт данные в сервис, сервис выполняет прикладную обработку и обращается к репозиторию, после чего результат возвращается клиенту в виде response-модели. Такое разделение соответствует многоуровневой архитектуре приложения и позволяет отделить API, прикладную логику и инфраструктурный доступ к данным.
